@@ -45,9 +45,7 @@ CREATE TABLE clients (
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="2f6fdd8d-ca72-4b2d-b1f7-7eb9354e5915" object-ref="consoles/LocalDB" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabasePrerequisiteManager">
     <prerequisites />
