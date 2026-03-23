@@ -11,10 +11,13 @@
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
-      <assistant-state connection-id="2f6fdd8d-ca72-4b2d-b1f7-7eb9354e5915" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="" availability="AVAILABLE" acknowledgement="NONE" selected="true">
-        <tools />
-      </assistant-state>
-      <assistant-state connection-id="2f6fdd8d-ca72-4b2d-b1f7-7eb9354e5915" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="" availability="UNAVAILABLE" acknowledgement="NONE">
+      <assistant-state connection-id="2f6fdd8d-ca72-4b2d-b1f7-7eb9354e5915" assistant-type="PUBLIC" default-profile-name="" selected-chat-id="ADC631C26BFF45369EB87E9002495A14" availability="AVAILABLE" acknowledgement="ENGAGED" selected="true">
+        <chats>
+          <chat id="ADC631C26BFF45369EB87E9002495A14" title="" session-signature="" timestamp="1774281887319">
+            <messages />
+            <context provider="" profile="" model="" action="" interactive="true" />
+          </chat>
+        </chats>
         <tools />
       </assistant-state>
     </assistants>
@@ -30,15 +33,22 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2f6fdd8d-ca72-4b2d-b1f7-7eb9354e5915">
-      <console name="LocalDB" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[drop table clients;
-select * from clients;
+      <console name="LocalDB" type="STANDARD" schema="SYSTEM" session="Main"><![CDATA[select length('Ankur') from dual;
+select initcap('ankur wadatkar') from dual;
+select chr(122) from dual;
+select lpad('Ashok IT',15,'*') from dual;
+select rpad('Ashok IT',15,'*') from dual;
+select translate('ankur','a','n') from dual;
 
 
-CREATE TABLE clients (
-    client_id NUMBER,
-    first_name VARCHAR2(50) ,
-    last_name VARCHAR2(50)        
-);]]></console>
+select reverse('ankur') from dual;
+select substr('ankur 123',2) from dual;
+select replace('ankur','a','b') from dual;
+select instr('My name is Ankur','is') from dual;
+SELECT INSTR('This is a playlist','is') substring_location FROM dual;
+
+select mod(-9) from dual;
+select  round(9.5) as round,  ceil(9.6) as sil. floor(9.4) as flor from dual;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
