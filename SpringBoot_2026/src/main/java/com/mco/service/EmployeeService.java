@@ -1,11 +1,15 @@
 package com.mco.service;
 
+
 import com.mco.entity.EmployeeDetails;
 import com.mco.repo.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -13,6 +17,7 @@ import java.util.List;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final tools.jackson.databind.ObjectMapper objectMapper;
 
     @Transactional
     public EmployeeDetails createEmployee(EmployeeDetails employeeDetails) {
@@ -61,5 +66,25 @@ public class EmployeeService {
     public void deleteEmployee(Long id) {
         EmployeeDetails employeeDetails = getEmployeeById(id);
         employeeRepository.delete(employeeDetails);
+    }
+
+    @Transactional(readOnly = true)
+    public List<EmployeeDetails> parseEmployeesFromFile(MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            throw new RuntimeException("Employee file is empty");
+        }
+
+        try {
+            return objectMapper.readValue(file.getInputStream(), new tools.jackson.core.type.TypeReference<List<EmployeeDetails>>() {
+            });
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to parse employee file", e);
+        }
+    }
+
+    @Transactional
+    public List<EmployeeDetails> saveAllEmployees(List<EmployeeDetails> employeeDetailsList) {
+        employeeDetailsList.forEach(employee -> employee.setId(null));
+        return employeeRepository.saveAll(employeeDetailsList);
     }
 }

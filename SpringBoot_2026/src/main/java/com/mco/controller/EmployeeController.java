@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -45,5 +47,16 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return "Employee deleted successfully";
+    }
+
+    @PostMapping("/upload")
+    public List<EmployeeDetails> uploadEmployeeFile(@RequestParam("file") MultipartFile file) {
+        return employeeService.parseEmployeesFromFile(file);
+    }
+
+    @PostMapping("/upload-and-save")
+    public List<EmployeeDetails> uploadAndSaveEmployeeFile(@RequestParam("file") MultipartFile file) {
+        List<EmployeeDetails> employeeDetailsList = employeeService.parseEmployeesFromFile(file);
+        return employeeService.saveAllEmployees(employeeDetailsList);
     }
 }
