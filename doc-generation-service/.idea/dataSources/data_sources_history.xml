@@ -1,0 +1,27 @@
+<DataSourcesHistory>
+  <DataSourceFromHistory isRemovedFromProject="false">
+    <data-source source="LOCAL" name="LocalDB" uuid="2b24d143-561b-4eb4-9cdd-4281e6102cd8">
+      <database-info product="Oracle" version="Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" jdbc-version="4.3" driver-name="Oracle JDBC driver" driver-version="23.26.2.0.0" dbms="ORACLE" exact-version="11.2.0.2.0" exact-driver-version="23.26">
+        <extra-name-characters>$#</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
+      <driver-ref>oracle.19</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
+      <secret-storage>master_key</secret-storage>
+      <user-name>SYSTEM</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="PUBLIC" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </DataSourceFromHistory>
+</DataSourcesHistory>
