@@ -1,0 +1,76 @@
+
+========================================================
+JPMC JAVA Developer Interview Questions (3+ Years Exp)
+========================================================
+
+1) Introduce about your self
+
+2) Explain the project you are currently working on.
+
+3) What types of Spring Boot starters have you used in the project?
+
+4) How to handle transactions in springboot project ?
+
+5) How do you connect to two databases, and how do you ensure rollback during exceptions?
+
+6) How are you managing code coverage in your project?
+
+7) How do you perform load testing for your application?
+
+8) Can you explain about JWT ?
+
+9) How do you secure internal communication between microservices
+
+10) How do you implement a retry mechanism for a failed API call?
+
+11) How do you implement blue-green deployment in your project?
+
+12) How do you deploy an application to AWS?
+
+13) What is serverless in AWS, and how are you using it?
+
+14) How to integrate payment gateway in the project ?
+
+15) How to send notifications to customer whatsapp number from our project
+
+16) What is Actuator and how to implement it?
+
+17) Explain about Auto Configuration in SpringBoot ?
+
+18) What is a Runner in springboot and where you have used it ?
+
+19) Can you explain about Component Scanning ?
+
+20) Difference between Controller and RestController
+
+21) Can you tell which annotations you have used from springboot in your project?
+
+22) How do you handle Exceptions in REST API ?
+
+23) What is Executor Service in java ?
+
+23) Can you explain about Sealed classes and Records in java ?
+
+23) What is the use of Spring Cloud in Microservices ?
+
+24) Write a Java 8 program to sort a HashMap based on its values.
+
+25) What is the Optional class in Java? Why was it introduced when we can handle null checks using traditional methods?
+
+26) Can you explain about profiles in springboot ?
+
+27) How to do pagination in spring boot?
+
+28) What is the Difference between application.properties and application.yml files
+
+29) Can we change default embedded container in springboot ?
+
+30) How would you implement a scheduled background job in Spring that runs every 2 hours?
+
+31) How do you handle versioning in REST APIs without breaking existing clients?
+
+32) Can you write Dockerfile to deploy springboot application
+
+33) What are the challenges you have faced in your project
+
+34) Do you have any questions for me

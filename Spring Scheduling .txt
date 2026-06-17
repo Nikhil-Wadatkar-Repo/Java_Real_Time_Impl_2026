@@ -1,0 +1,132 @@
+
+=============================
+What is Spring Scheduling ?
+=============================
+
+=> Spring scheduling is a feature provided by the Spring Framework that allows you to schedule tasks or method to be executed at specific time intervals.
+
+Ex : 
+
+	** execute m1 ( ) method daily at 9:00 AM
+
+	** execute m2 ( ) method every monday @11:00 AM
+
+	** execute m3 ( ) method every Saturday @8:00 PM
+
+=> It provides a convenient way to automate repetitive tasks, background processing, or any other operations that need to be executed periodically.
+
+Spring scheduling is typically used in applications where you need to perform tasks at regular intervals, such as:
+
+1) Generating reports or performing data backups at specific times.
+
+2) Sending periodic notifications or reminders.
+
+3) Updating cache or performing data sync.
+
+4) Running Batch Jobs (hourly / daily / weekly / monthly / yearly)
+
+
+==========================================================
+How to implement Scheduling in Spring Based Application ?
+==========================================================
+
+=> By using @EnableScheduling and @Scheduled annotation we can implement scheduling in our spring application.
+
+
+@Scheduled(fixedRate=1000)
+public void m1(){
+	
+	// logic to generate report and send in email
+}
+
+
+fixedRate : This attribute specifies the interval between the start times of consecutive task executions. It means that the task will be executed at a fixed rate, regardless of the duration of the previous task execution.
+
+
+fixedDelay : This attribute specifies the delay between the completion of the previous task execution and the start of the next execution. It means that the task will be executed with a fixed delay after the completion of the previous execution.
+
+
+===========================
+What is cron expression ?
+===========================
+
+=> Cron expression is used to define scheduling patterns for our tasks.
+
+=> Cron expression provide a flexible and powerful way to specify the timing of task executions.
+
+=> A cron expression consists of six fields, representing different aspects of the schedule. The fields are separated by spaces:
+	
+	** Spring Cron Synatax : sec min hour day month weekday [year]
+
+Position-1 : seconds (0 - 59)
+
+Position-2 : Minutes (0 - 59)
+
+Position-3 : Hours (0 - 23)
+
+Position-4 : Day of month (1 - 31)
+
+Position-5 : Month( 1 - 12 or JAN-DEC)
+
+Position-6 : Day of week (0 - 6 or SUN - SAT) (0 = sunday)
+
+Position-7 : Year (empty, or 1970-2099) (optional)
+
+=========================================================
+
+
+Every Second : * * * * * *
+
+Every Minute : 0 0/1 * * * * (or) 0 * * * * * (Ex: 9:10, 9:11, 9:12, 9:13...)
+
+Every Hour :  0 0 * * * (Ex: 9:00 AM, 10:00 AM, 11:00 AM, 12:00 PM..)
+
+Every Day at 9:00 AM : 0 0 9 * * * 
+
+Every day at 11:30 AM : 0 30 11 * * *
+
+Every Monday 9:00 AM : 0 0 9 * * MON
+
+Every Monday to Friday at 9:00 AM : 0 0 9 * * MON-FRI
+
+Dec-31st at 12:00 AM  : 0 0 0 31 12 *
+
+02-Jun at 9:00 am every year : 0 0 9 2 JUN *
+
+===========================================================
+
+
+
+
+
+class Cat {
+ int j ;
+ Cat(int j) {
+ this.j=j ;
+ }
+ }
+
+ class Dog implements Clonable {
+ Cat c ;
+ int i ;
+ Dog(Cat c , int i) {
+ this.c=c ;
+ this.i=i ;
+ }
+ public Object clone( ) throws CloneNotSupportedException {
+ return super.clone( );
+ }
+ }
+
+ class ShallowClone {
+ public static void main(String[ ] ar) {
+ Cat c=new Cat(20) ;
+ Dog d1=new Dog(c , 10) ;
+ System.out.println(d1.i +......+d1.j); // 10......20
+
+ Dog d2=(Dog)d1.clone( ) ;
+ d1.i=888 ;
+ d1.c.j=999 ;
+ System.out.println(d2.i +......+d2.j); // 10......999
+ }
+ }
