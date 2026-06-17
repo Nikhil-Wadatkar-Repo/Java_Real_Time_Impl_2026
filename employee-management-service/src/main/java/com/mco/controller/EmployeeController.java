@@ -39,6 +39,11 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.seedRealTimeEmployees(count));
     }
 
+    @PostMapping("/seed-another-30000")
+    public ResponseEntity<BulkSeedResponse> seedAnother30000Employees() {
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.seedAnother30000Employees());
+    }
+
     @GetMapping
     public ResponseEntity<List<Employee>> getAll() {
         return ResponseEntity.ok(employeeService.findAll());

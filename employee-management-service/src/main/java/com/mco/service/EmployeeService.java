@@ -5,10 +5,15 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.mco.Utility;
 import com.mco.dto.BulkSeedResponse;
 import com.mco.dto.BulkEmployeeSaveResponse;
 import com.mco.dto.EmployeeDepartmentView;
@@ -20,6 +25,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -216,6 +223,59 @@ public class EmployeeService {
                 .build();
     }
 
+    @Transactional
+    public BulkSeedResponse seedAnother30000Employees() {
+        return seedUniqueSyntheticEmployees(30000, "Inserted another 30000 employee records with unique emails");
+    }
+
+    private BulkSeedResponse seedUniqueSyntheticEmployees(int count, String messagePrefix) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("count must be greater than 0");
+        }
+
+        long start = System.currentTimeMillis();
+        String runToken = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
+        int batchSize = 500;
+        Set<String> existingEmails = new HashSet<>(employeeRepository.findAll()
+                .stream()
+                .map(Employee::getEmail)
+                .filter(email -> email != null && !email.isBlank())
+                .toList());
+        Set<String> generatedEmails = new HashSet<>();
+
+        int insertedCount = 0;
+        int seedIndex = 0;
+        while (insertedCount < count) {
+            Employee employee = buildRealTimeEmployee(seedIndex++, runToken);
+            String email = employee.getEmail();
+
+            if (existingEmails.contains(email) || !generatedEmails.add(email)) {
+                continue;
+            }
+
+            entityManager.persist(employee);
+            insertedCount++;
+
+            if (insertedCount % batchSize == 0) {
+                entityManager.flush();
+                entityManager.clear();
+            }
+        }
+
+        entityManager.flush();
+        entityManager.clear();
+
+        long duration = System.currentTimeMillis() - start;
+        log.info("Inserted {} synthetic employee records in {} ms.", insertedCount, duration);
+
+        return BulkSeedResponse.builder()
+                .requestedCount(count)
+                .insertedCount(insertedCount)
+                .durationMs(duration)
+                .message(messagePrefix)
+                .build();
+    }
+
     private Employee buildRealTimeEmployee(int index, String runToken) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         String firstName = FIRST_NAMES.get(random.nextInt(FIRST_NAMES.size()));
@@ -240,6 +300,7 @@ public class EmployeeService {
                 .employmentType(EMPLOYMENT_TYPES.get(random.nextInt(EMPLOYMENT_TYPES.size())))
                 .gender(random.nextBoolean() ? "Male" : "Female")
                 .status("ACTIVE")
+                .localStatus("ACTIVE")
                 .bonus(BigDecimal.valueOf(random.nextDouble(1000.0, 25000.0)).setScale(2, RoundingMode.HALF_UP))
                 .build();
     }
@@ -260,4 +321,52 @@ public class EmployeeService {
         }
         return employeePage;
     }
-}
+
+    @Autowired
+    public Utility processor;
+    @Autowired
+    private Executor taskExecutor;
+
+    public String processAllEmployees() {
+        long startTime = System.currentTimeMillis();
+
+//        List<Employee> employees = employeeRepository.findAll();
+
+        Pageable pageable =
+
+                PageRequest.of(0, 1000);
+
+        Page<Employee> page;
+
+             page = employeeRepository.findAll(
+                    pageable);
+
+            List<Employee> employees =
+                    page.getContent();
+
+            List<CompletableFuture<Employee>> futures = employees.stream()
+                    .map(employee -> CompletableFuture.supplyAsync(
+                            () -> processor.processEmployee(employee),
+                            taskExecutor
+                    ))
+                    .toList();
+
+            CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
+
+            List<Employee> updatedEmployees = futures.stream()
+                    .map(CompletableFuture::join)
+                    .toList();
+            String message = "";
+            try {
+                employeeRepository.saveAll(updatedEmployees);
+                message = "All employees are saved and updated.";
+            } catch (Exception e) {
+//            throw new RuntimeException(e);
+                message = "Errorrrrr";
+            }
+
+            long totalTimeMs = System.currentTimeMillis() - startTime;
+            log.info("Processed {} employees in {} ms.", employees.size(), totalTimeMs);
+            return message;
+        }
+    }

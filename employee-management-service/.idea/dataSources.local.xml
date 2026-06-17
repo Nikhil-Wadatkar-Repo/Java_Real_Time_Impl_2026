@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-261.24374.151">
-    <data-source name="LocalDB" uuid="2b24d143-561b-4eb4-9cdd-4281e6102cd8">
-      <database-info product="Oracle" version="Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" jdbc-version="4.3" driver-name="Oracle JDBC driver" driver-version="23.26.2.0.0" dbms="ORACLE" exact-version="11.2.0.2.0" exact-driver-version="23.26">
-        <extra-name-characters>$#</extra-name-characters>
+    <data-source name="postgres@localhost" uuid="d6c269b1-cf0a-4640-b539-9030ac2979ce">
+      <database-info product="PostgreSQL" version="17.10" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="17.10" exact-driver-version="42.7">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
-      <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>SYSTEM</user-name>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>session</secret-storage>
+      <user-name>postgres</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="PUBLIC" />
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
           </node>
         </introspection-scope>
       </schema-mapping>
