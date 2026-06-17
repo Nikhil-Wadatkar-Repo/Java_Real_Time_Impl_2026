@@ -1,0 +1,1190 @@
+SPRING AI by Ashok IT
+---------------------------------------w
+================================================
+1. What is AI ? (Artificial Intelligence)
+================================================
+
+=> AI is the branch of computer science.
+
+=> It aims to create the machine that can think and act like humans.
+
+=> It is used to create intelligent machines.
+
+ ~~~~~~~~ AI = Making computers to do tasks that normally require human intelligence ~~~~~~
+
+In normal programming, we tell the computer exactly what to do.
+
+But with AI......
+
+1) The machine observes
+
+2) The machine learns patterns
+
+3) The machine improves over time
+
+4) The machine takes decision on its own
+
+
+Example: 
+
+=> If you tell a traditional program: "If temperature > 40, turn on AC in classroomâ€, it follows only that rule.
+
+But an AI system can learn:
+
+1) What temperature students prefer in classroom
+
+2) What time the room usually becomes hot
+
+3) How to adjust automatically
+
+So AI is adaptive and smart.
+
+
+~~~~~~ Examples of Human Abilities AI Tries to Mimic ~~~~~~~
+
+1) Thinking -> Decision Making  (Google Maps Choosing Route)
+
+	- understand traffic conditions, predicts travel time, suggest best route...
+
+2) Learning -> From Experience (Youtube recommended videos, Netflix Recommended videos)	
+
+	- Learns what type of videos you watch and recommends similar ones.
+
+3) Seeing -> Computer Vision (Face unlock in phones)	
+
+	- Identifies your face using image recognition.
+
+4) Talking -> Speech recognition (Siri, Alexa)	
+
+	- Understands speech and responds to commands.
+
+5) Understanding -> Natural Language (Chat GPT, DeepSeek)	
+
+	-- Understands natural language and generates human-like responses.
+
+
+~~~~~~~~~~~~~~~~~~~~~ AI Real-life Examples ~~~~~~~~~~~~~~~~~~~~	
+
+1) Self Driving Cars
+
+2) Fraud Detection System in Banks
+
+3) Spam Detection in Email
+
+4) ChatGpt answering questions
+
+
+===========================
+Why AI is Important Today?
+===========================
+
+1) Automates repetitive tasks
+
+2) Reduce human errors
+
+3) Saves time and cost
+
+4) Helps in medicine, farming, finance, education
+
+5) Makes technology more personalized
+
+6) Helps companies make better decisions
+
+7) AI is shaping the future in every industry!
+
+===================================
+2. What is ML? (Machine Learning)
+===================================
+
+=> Machine Learning is a subset/module of AI.
+
+=> ML allows computers to learn patterns from data instead of writing programs explicitley.
+
+=> Machine Learning is a technique where
+
+	1) We give lot of data to computer
+
+	2) The computer finds patterns in that data
+
+	3) Then it uses those patterns to make predictions or decisions.
+
+=> Machine Learning doesnâ€™t follow fixed rules like normal programming. Instead, it learns from examples/data.
+
+
+## Ex-1 : 
+
+-> If you show a machine 1000 pictures of cats and dogs
+
+		- ML learns patterns of cats and dogs
+
+		- ML identifies new cat/dog images based previous patterns
+
+## Ex-2 : Email Spam Filter
+
+		- ML learns of thousands of emails
+		- System observe Which emails people mark as spam and which are safe
+		- Then automatically identifies spam emails in your inbox and seperate them
+
+## Daily Life Examples of Machine Learning...		
+
+1) Neflix / Youtube Recommendations : Learns your watching patterns and suggests similar videos.
+
+2) Google Photos : Recognizes your face, pets, objects, etc.
+
+3) Online Shopping (Flipkart/Amazon) : Shows products based on your past purchases.
+
+4) Credit Card Fraud Detection : Detects unusal transactions
+
+## How Machine Works in the projects
+
+	Step-1 : Collect the data (images, text, numbers, articles, website etc...)
+
+	Step-2 : Train the model with data (model learns patterns from data)
+
+	Step-3 : Test the model (check model is giving correct predictions or not)
+
+	Step-4 : Use the model (predict on new unseen data)
+
+
+~~~~~~~ Machine Learning = Learn from data -> Improve over a time -> Make Predictions ~~~~~~~
+
+
+===========================
+Types of Machine Learning
+===========================
+
+1) Supervised Learning 
+
+2) Un-Supervised Learning
+
+3) Re-Inforcement Learning
+
+=> Supervised Learning is a type of Machine Learning where the model is trained using labeled data (input + correct output).
+
+	Ex: Predicting house prices, email spam classifications
+
+=> Unsupervised Learning works with unlabeled data. The model tries to find patterns or structures on its own.
+
+	Ex: Customer seggregation, Grouping similar customers, findining patterns in the data
+
+=> Re-inforcement Learning â€“ The model learns by trial and error, Learns from rewards and penalties
+
+	Ex: self driving cars, Robots learning to walk
+
+
+### Why ML is Important Today? 
+
+1) Helps automate decision-making
+
+2) Works with large amounts of data
+
+3) Gives high accuracy
+
+4) Used in every industry (IT, banking, healthcare, education, e-commerce)
+
+5) Enables personalized experiences
+
+
+=================================
+3. What is Deep Learning? (DL)
+=================================
+
+=> Deep Learning is a subset of ML that uses artificial neural networks â€” algorithms inspired by the human brain to learn from large amounts of data..
+
+=> Why is it â€œDeepâ€? : Because it uses many layers of neurons (deep networks).
+
+=> Deep Learning is part of Machine Learning, but it is much more powerful than Machine Learning.
+
+=> ML is subset of AI where models learn from data using algorithms.
+=> DL is subset of ML that ses neural networks with many layers
+
+=> ML works well with small to medium data
+=> DL needs huge amount data
+
+=> In ML, for feature Engineering human effort required (Manual)
+=> in DL, for feature engineering human effort not required (Automatic, model learns features itself)
+
+=> ML Algorithms : Linear Regression, Logistic Regression, Decision Tree, Random Forest
+=> DL Algorithms : Transformers, RAG
+
+=> ML Computation : ML algorithms can run on normal CPU
+=> DL Computation :  DL algorithms need GPU
+
+=> ML Model Training Time : Faster
+=> DL model training time : Slower
+
+
+## Where is Deep Learning Used ? 
+
+-> Face recognition : Detects your face using deep neural networks.
+
+-> Speech-to-text : Convert speech â†’ text â†’ meaning.
+
+-> ChatGPT (Large Language Models) : Uses huge deep learning models (Transformers).
+
+-> Self-driving cars detecting objects :  Understands lanes, traffic signs, obstacles.
+
+-> Google Photos automatically grouping faces : Identifies objects: cats, dogs, people, cars.
+
+-> Medical Diagnosis : Detects diseases from X-rays, MRI scans.
+
+
+~~~~ Deep Learning ---> Neural Networks (many layers) --> Automatic Feature Extraction ~~~
+
+=====================
+Q) When to use ML ?
+=====================
+
+		- Data is Limited
+		- Problem is simple
+		- Need explainable model
+		- High accuracy is not critical
+
+=====================
+Q) When to use DL ?
+=====================
+
+		- Large data available
+		- More data in the form of images/audios/text tasks
+		- High accuracy is critical		
+
+
+================================================
+4) What is NLP? (Natural Language Processing)
+================================================		
+
+=> Natural Language Processing (NLP) is a branch of AI that helps computers understand, interpret, and generate human language.
+
+~~~ NLP = Teaching computers to understand English, Telugu, Hindi, or any human language. ~~~
+
+Humans communicate using language â€” sentences, emotions, tone, grammar.
+
+But computers communicate using numbers.
+
+NLP is the technology that acts as a bridge between humans and computers.
+
+
+=> Using NLP, computers can perform below activities
+
+		- Read text
+		- Listen to speech
+		- Understand meaning
+		- Analyze human emotions
+		- Generate Answers
+		- Translate languages
+
+Note : NLP allows machines to interact with us naturally â€” like another human.
+
+### Examples of NLP
+
+		ChatGpt, Gemini : Understands your questions and replies like a human.
+
+		Google Translate : Converts Telugu â†” English or Hindi â†” Tamil.
+
+		Siri/Alexa :  Understand spoken commands and respond.
+
+
+===================================
+5) What is Generative AI? (GenAI)
+===================================	
+
+=> Generative AI is a type of AI that can create new content like text, images, videos, audios, code-based on the data it has learned.
+
+=> GenAI models donâ€™t just analyze data; they generate something new.
+
+### Traditional AI focuses on:
+
+	- Classification (spam or not spam)
+
+	- Predication (price, weather)
+
+	- Detection (objects, fraud)
+
+### But Generative AI goes beyond that.
+
+=> It learns patterns from huge amounts of data and then uses those patterns to generate original content that looks like it was created by human.
+
+## GEN AI Examples
+
+	- Chat GPT : Creates text
+
+	- MidJourney/DALL-E : Creates images
+
+	- Suno : Creates music
+
+	- RunWayML : Creates videos
+
+	- GitHub Copilot : Writes code
+
+
+=> If you train GEN AI model with 1000 songs, then it can create new song which is not a copy of any single song.
+
+## How Generative AI Works 
+
+~~~ Step-1 â€“ Training
+
+	- AI model is trained on huge data sets
+				- Millions of images
+				- Billions of sentences
+				- Thousands of audios and videos files
+
+~~~ Step-2 â€“ Pattern Learning
+
+	- AI Learns styles + grammer + shapes + colors + emotions + tones
+
+~~~~ Step-3 â€“ Generation
+
+	- AI uses these learned patterns to create new content that never existed earlier.
+
+#### Technologies Behind GenAI ####
+
+=> Modern Generative AI uses advanced Deep Learning methods:
+
+1) Transformers : Backbone of ChatGpt, Gemini
+
+2) LLMs (Large Language Models) : Trained on massive text (GPT-4, LLaMA)
+
+3) Difussion Models: Used in image generation (Ex : DALL-E, MidJourney)
+
+4) GANs (Generative Adversarial Networks) : Used for realistic images and Videos.
+
+========================
+6) What is Agentic AI? 
+========================
+
+=> Agentic AI is a type of Artificial Intelligence that can think, decide, and take actions on its own to achieve a goal â€” just like an intelligent assistant or agent.
+
+
+=> Traditional AI can answer only our questions where as Agentic AI can "plan + Act + Complete Task independentley".
+
+~~ Gen AI : Only generates content + Needs user prompt + Static response
+
+~~ Agentic AI : Takes actions to achieve goals + Can work autonomously + Interactive, decision-making
+
+
+=> Agentic AI is the next big evolution of AI.
+
+=> Typical AI tools like ChatGPT
+
+	- Waits for user input
+	- Give a response
+	- Don't act by themself
+
+=> Agentic AI
+
+	- Understand your goal
+	- Break it into steps
+	- Take actions one by one
+	- Learn from results
+	- Adjust the plan
+	- Complete the task
+
+Note: Agentic AI behaves like a digital worker.	
+
+
+~~~~~~~~~ Agentic AI Scenario : Organize a school event ~~~~~~~~~~~~
+
+			- Make a plan
+			- Book the hall
+			- Send message to students
+			- Create Posters
+			- Prepare Guest list
+			- Manage event schedule
+
+
+# Agentic AI Examples
+
+	- An AI that books your flight tickets after comparing prices
+
+	- AI that reads your emails and drafts replies
+
+	- AI DevOps agents that deploy apps automatically
+
+	- AI customer support agents that solve issues end-to-end
+
+	- AI personal assistant that schedules meetings
+
+
+===========
+Summary
+===========
+
+AI => Big Umbrella
+
+ML => AI that learns from data
+
+DL => ML that uses neural networks
+
+NLP => AI that understand human language
+
+GEN AI => AI that creates new content
+
+Agentic AI => AI that takes actions autonomously
+
+===============================
+How AI/ML and Gen AI works ? 
+===============================
+
+1) Data Collection
+
+2) Data Preparation
+
+3) Model Selection
+
+4) Train the Model (80% of data)
+
+5) Evaluate the model (20% of data)
+
+6) Parameter Tuning
+
+6) Predictions
+
+8) GEN AI Generates New content
+
+9) Agentic AI performs Actions on its own
+
+
+
+===================
+What is Open AI ?
+===================
+
+=> OpenAI is an AI research and development company that builds AI systems.
+
+=> This OpenAI company helping the people to work, learn, and create more AI systems effectively.
+
+=> It has several AI models to solve real world problems like Text, Images, Audio, Embeddings.
+
+=> It got popular because of its Product that is 'ChatGPT'.
+
+=> AI powered chatbot that answers questions and generate text based on input. 
+
+=> ChatGpt is browser based tool for individual work flows...
+
+=================
+What OpenAI does 
+==================
+
+=> OpenAI develops advanced AI models such as:
+
+1) ChatGPT -> Responds like a human, answer questions, write code, generate content...
+
+2) GPT Models -> Powerful language models used in apps, websites and tools.
+
+3) DALL-E -> Create images from text prompts
+
+3) Whisper -> Converts speech to text
+
+=> OpenAI company exposing their LLMs as REST APIs.
+
+=> OpenAI LLM APIs â€“ allow developers to integrate AI into their own applications.
+
+Note: In our application we can integrate OPENAI provided APIs and we can complete the task without developing our own models.
+
+===============
+What is LLM ?
+===============
+
+=> LLM stands for Large Language Model.
+
+=> LLM means an AI model which got trained with Massive data (books, websites, articles, code..)
+
+=> After training got completed, LLM model understand and generates human language.
+
+=> Several companies developed and released LLMs into market.. below are the famous LLMs available
+	
+	OpenAI Company -----------> GPT-4/GPT-4o
+
+	Google Company -----------> Gemini
+
+	META ---------------> LLaMa
+
+	Anthropic --------> Claude
+
+====================
+What is Spring AI ?
+====================
+
+=> Spring AI is a spring framework project.
+
+=> Spring AI that helps java developers to build AI-Powered applications easily using LLMs.
+
+=> Spring AI provides abstrations, starters and integrations to connect your spring applications with AI models and AI services.
+
+		Spring AI = Spring Boot + AI Models
+
+=> Before Spring AI
+
+	- Writing AI code in java was complex
+
+	- Different API for Different LLMs (Open AI, Gemini, Ollama.)		
+
+	- No standard way to build AI functionality in JAVA
+
+=> Spring AI solving all the above problems	
+
+	- Providing a Spring Style Abstraction
+
+	- Easy Integration with Open AI, Azure AI, Ollama AI, Gemini AI
+
+	- Good support for RAG systems
+
+
+===========================
+Spring AI Project Setup
+===========================
+
+Step-1 : OpenAI Account setup
+
+	URL : https://platform.openai.com/
+
+Step-2 : Generate API key to access OpenAI LLMs
+
+Step-3 : Configure OPENAI Key in our system environment variables. (OPTIONAL)
+
+		OPENAI_API_KEY=<KEY>
+
+Step-4 : Create Spring Boot application with below dependencies
+
+		- web starter
+		- thymeleaf starter
+		- lombok
+		- devtools
+		- open ai starter
+
+
+Step-5 : Configure below properties in application.yml file 
+
+```
+spring:
+  ai:
+    openai:
+      api-key: <YOUR_API_KEY>
+      chat:
+        options:
+          model: gpt-4o
+          max-tokens: 100
+```
+
+Step-6 : Create Service class to access LLM models
+
+```
+@Service
+public class OpenAIService {
+
+	// spring ai interface (impl class will be provided by LLM provider)
+	private ChatClient chatClient;
+
+	public OpenAIService(ChatClient.Builder builder) {
+		this.chatClient = builder.build();
+	}
+
+	public String askAnything(String question) {
+		return chatClient.prompt().user(question).call().content();
+	}
+
+}
+```
+
+======================
+Chat Memory Advisors
+======================
+
+=> In Spring AI, by defalt ChatClient is not remembering our previous conversation with LLM.
+
+=> In Spring AI, Chat Memory Advisors are used to make the AI to remember previous questions and answers in a conversation and respond in the context-aware, just like ChatGPT.
+
+=> A Chat Memory Advisor is a middleware component that
+
+		- store user questions
+
+		- store AI model responseses
+
+		- Inject past conversation into every new prompt automatically
+
+
+```
+public OpenAIService(ChatClient.Builder builder, ChatMemory chatMemory) {
+	chatClient = builder.defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build()).build();
+}
+```
+
+
+==============================
+What is Prompt Engineering ?
+==============================
+
+=> It is the process of asking questions to AI models.
+
+=> Prompt Engineering is the skill of designing clear, effective instructions (prompts) to get the best possible output from AI models like OpenAI, Gemini, OllaMa, or Claude.
+
+Example : 
+
+// Poor Prompt
+Prompt-1 : Explain JAVA
+
+// Good Prompt
+Prompt-2 : Explain java for beginner in simple english with real-world examples in 10 points. 
+
+
+=> Key elements of a good prompt
+
+		1. Role  (Ex: Act as a java instructor)
+
+		2. Task (Ex: Explain SpringBoot)
+
+		3. Context (Ex: For java freshers)
+
+		4. Format (Ex: Use bullet points with examples)
+
+		5. Constraints (Ex: With in 200 words)
+
+------------------------------- Service Class --------------------------------------
+
+@Service
+public class OpenAIService {
+
+	// spring ai interface (impl class will be provided by LLM provider)
+	private ChatClient chatClient;
+
+	/*
+	public OpenAIService(ChatClient.Builder builder) {
+		this.chatClient = builder.build(); // state less client
+	}
+	*/
+	
+	// Making chatclient as statefull
+	public OpenAIService(ChatClient.Builder builder, ChatMemory chatMemory) {
+		this.chatClient = builder.defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build()).build();
+	}
+	
+	public String askAnything(String question) {
+		return chatClient.prompt().user(question).call().content();
+	}
+	
+
+	public String getTravelGuidance(String place, String month, String language, String budget) {
+		
+		PromptTemplate promptTemplate = new PromptTemplate("Welcome to the {place} travel guide!\n"
+				+ "If you're visiting in {month}, here's what you can do:\n" + "1. Must-visit attractions.\n"
+				+ "2. Local cuisine you must try.\n" + "3. Useful phrases in {language}.\n"
+				+ "4. Tips for traveling on a {budget} budget.\n" + "Enjoy your trip!");
+		
+		Prompt prompt = 
+				promptTemplate.create(Map.of("place", place, "month", month, "language", language, "budget", budget));
+		
+		return chatClient.prompt(prompt).call().chatResponse().getResult().getOutput().getText();
+	}
+}
+-------------------------------------TravelGuideController-----------------------------------
+
+@Controller
+public class TravelGuidanceController {
+
+	@Autowired
+	private OpenAIService openAiService;
+
+	@GetMapping("/showTravelGuide")
+	public String showTravelGuide() {
+		return "travelGuide";
+	}
+	
+	@PostMapping("/showTravelGuide")
+	public String getTravelGuideResponse(@RequestParam("place") String place, 
+										@RequestParam("month") String month, 
+										@RequestParam("language") String language, 
+										@RequestParam("budget")String budget,
+										Model model) {
+		
+		String response = openAiService.getTravelGuidance(place, month, language, budget);
+		
+		model.addAttribute("place", place);
+		model.addAttribute("response", response);
+		
+		return "travelGuide";
+		
+	}
+}
+---------------------------------UI Page----------------------------------------------		
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Travel Guidance</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Marked.js (Markdown Parser) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">
+            <i class="bi bi-airplane"></i> AI Travel Guide
+        </span>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <!-- Input Card -->
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4><i class="bi bi-globe"></i> Plan Your Trip</h4>
+                </div>
+
+                <div class="card-body">
+                    <form th:action="@{/showTravelGuide}" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Destination</label>
+                            <input type="text" class="form-control" name="place" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Travel Month</label>
+                            <input type="text" class="form-control" name="month" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Language</label>
+                            <select class="form-select" name="language">
+                                <option>English</option>
+                                <option>Hindi</option>
+                                <option>Telugu</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Budget</label>
+                            <input type="text" class="form-control" name="budget" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg">
+                                <i class="bi bi-search"></i> Get Travel Guide
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Response Card -->
+            <div class="card shadow mt-4" th:if="${response}">
+                <div class="card-header bg-success text-white">
+                    <h5>
+                        <i class="bi bi-info-circle"></i>
+                        Travel Guide for <span th:text="${place}"></span>
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <!-- Raw markdown (hidden) -->
+                    <textarea id="markdownText" class="d-none"
+                              th:text="${response}"></textarea>
+
+                    <!-- Rendered HTML -->
+                    <div id="markdownOutput" class="markdown-body"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Markdown Rendering Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const markdownText = document.getElementById("markdownText");
+        const outputDiv = document.getElementById("markdownOutput");
+
+        if (markdownText && outputDiv) {
+            const markdown = markdownText.value;
+            outputDiv.innerHTML = marked.parse(markdown);
+        }
+    });
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------
+
+Assignment : Develop Image generation functionality using Spring AI
+
+----------------------------------------------------------------------------------------
+
+@Autowired
+private ImageModel imageModel;
+
+public String generateImage(String prompt) {
+		
+		ImageResponse imageResponse = 
+				imageModel.call(new ImagePrompt(prompt, ImageOptionsBuilder.builder().height(1024).width(1024).N(1).build()));
+
+		return imageResponse.getResult().getOutput().getUrl();
+	}
+------------------------------------------------------
+@Controller
+public class ImageGenerationController {
+
+	@Autowired
+	private OpenAIService openAiService;
+
+	@GetMapping("/imageGenerator")
+	public String showImageGeneratorPage() {
+		return "imageGenerator";
+	}
+
+	@PostMapping("/imageGenerator")
+	public String generateImage(@RequestParam String prompt, Model model) {
+		String imageUrl = openAiService.generateImage(prompt);
+		model.addAttribute("image", imageUrl);
+		return "imageGenerator";
+	}
+}
+-------------------------------------------------
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<form th:action="@{/imageGenerator}" method="post">
+			Enter Text : <input type="text" name="prompt">
+			<input type="submit" value="submit" />
+		</form>
+
+		<hr />
+
+		<h2>Generated Image</h2>
+
+		<img th:src="${image}" alt="ai image">
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
+------------------------------------------------------------------------------
+
+==============================
+Setup Opensource LLMS Locally
+==============================
+
+Minimum Requirements : 
+
+		RAM : 8 GB (16GB Recommended)
+
+		CPU : Any Modern i5
+
+		OS : Windows / Linux / MacOS
+
+		GPU (NVIDIA) : 6-8 GB VRAM
+
+
+=> Ollama is an openâ€‘source tool that lets you run large language models (LLMs) locally on your machine
+
+# Step-1 : Download and install Ollama		
+
+ðŸ‘‰ https://ollama.com
+
+# Step-2 : After installation, open CMD and execute ollama commands
+
+
+# see ollamands commands
+$ ollama help
+
+# display list of LLMs available in our machine
+$ ollama list
+
+# download large language model by giving its name
+$ ollama pull gemma:2b
+
+# see llms which are running 
+$ ollama ps
+
+# ollama run gemma:2b
+
+Note: Once model started, we can give prompt to model and it will provide response 
+
+# stop the model exection
+ctrl + d (or) /bye
+
+
+~~~~~~ Thatâ€™s it!  Youâ€™re running an LLM 100% locally ~~~~~~~~~~~
+
+=> Popular Open-Source LLMs 
+
+		LLAMA 3 : General AI purpose
+
+		Mistral : Fast & lightweight
+
+		CodeLLaMA : Coding purpose
+
+		Phi-3 : Low RAM Systems
+
+		Gemma : Google Open Model
+
+=====================================================================
+Connect Spring Boot application to Gemma:2b Model running in local	
+=====================================================================	
+
+## Step-1 : Run LLM as an API (to connect with Projects)
+
+		$ ollama serve
+
+
+## Step-2 : Add ollama starter in pom.xml file		
+				(comment open-ai starter and add below one)
+
+```
+<dependency>
+	<groupId>org.springframework.ai</groupId>
+	<artifactId>spring-ai-starter-model-ollama</artifactId>
+</dependency>
+```
+
+
+## Step-3 : Remove Open AI props and configure ollam props in application.yml file like below
+
+```
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: gemma:2b
+```          
+
+## Step-4 : Run the application and test it.
+
+
+=====================================================================================
+
+Assignment : Develop Spring AI application with below functionalities
+
+1) Speech to text conversion
+
+2) Text to speech conversion
+
+=====================================================================================
+
+
+============================================
+What is a Vector Store / Vector Database ?
+============================================
+
+A Vector Store DB is a database designed to store and search data in the form of vectors (numbers) instead of rows and columns.
+
+==============
+Why Vectors ?
+==============
+
+Text, images, audio, and code cannot be directly compared by meaning.
+So we convert them into embeddings (vectors) using AI models.
+
+Example-1: 
+
+"What is Docker?"
+â†’ [0.12, -0.45, 0.88, 0.31, ...]
+
+Example-2 :
+
+[
+  {
+    "content": "Docker is a containerization tool used to package applications.",
+    "embedding": [0.12, 0.88, -0.44, 0.91, ...]
+  },
+  {
+    "content": "Kubernetes is used for container orchestration.",
+    "embedding": [0.67, -0.21, 0.55, 0.14, ...]
+  },
+  {
+    "content": "CI/CD automates build, test, and deployment pipelines.",
+    "embedding": [-0.33, 0.92, 0.11, 0.77, ...]
+  }
+]
+
+=========================
+Popular Vector Databases
+=========================
+
+1) Chroma DB
+2) Pinecone
+3) Milvus
+4) Weaviate
+5) FAISS
+
+==========================================
+Real-World usecases for vector databases
+==========================================
+
+1) Chatbots
+2) Document search
+3) AI Assistants
+4) Code Search
+
+
+=============
+What is RAG
+=============
+
+=> RAG stands for Retrieval-Augmented Generation
+
+=> RAG is an AI architecture that combines "Vector search + LLM generation"
+
+=> Instead of asking the LLM to answer from memory, we can:
+
+		- Retrieve relevant data from a vector DB
+		- Augment the prompt with that data
+		- Let the LLM generate an answer
+
+
+======================
+Why RAG is required ?
+======================
+
+=> To overcome below challenges of LLMs we are using RAG
+
+		- LLMs Don't have access to private data / latest data
+
+		- LLM will have fixed knowledge (Training Cutoff)
+
+=============================
+How to implement RAG System	
+=============================
+
+Step-1 : Data Ingestion
+
+			 - Collect data in the form of PDFs, Word files, txt files, websites, DB records
+			 - Convert text -> embeddings
+			 - Store data in vector db
+
+Step-2 : User Query			 
+
+				- User asks a question (Ex: What is JAVA)
+				- Query will be converted into embedding
+
+Step-3 : Retrieval				
+
+				- Vector DB finds most similar documents
+				- Returns top relevant chunks
+
+Step-4 : Generation
+
+			  - Retrieved Content + User Question
+			  - Sent to LLM (GPT, LLaMMA, Gemini)
+			  - LLM Generates accurate answer
+
+
+===========================================================
+Spring AI + Vector Store (Pinecone)	+ RAG :: Project Setup
+===========================================================
+
+Step-1 : Setup pinecone account (free of cost)
+
+		URL : https://www.pinecone.io/
+
+Step-2 : Generate API Key and note it down
+
+Step-3 : Create Index (database)
+
+				Select Model : text-embedding-3-small
+				Select Dimensions : 1536
+
+Step-4 : Create SpringBoot application with below dependencies
+
+					- web-starter
+					- spring-ai-starter-open-ai
+					- spring-ai-advisors-vector-store
+					- vector-store-pinecone
+
+Step-5 : Keep data files in 'src/main/resources/'	folder (Ex: spring-notes.txt)
+
+Step-6 : Configure Open AI & Pinecone keys in "properties/yml" file
+
+Step-7 : Create a Data Loader class to load our data into Vector Store DB.
+
+Step-8 : Create Service class with business logic (RAG + LLM Integration)
+
+Step-9 : Create Rest Controller with Http Method
+
+Step-10 : Run the application and test it using Postman.
+
+========================
+Summary of our Workshop
+========================
+
+1) What is AI ?
+
+2) What is ML ?
+
+3) What is DL ?
+
+4) ML vs DL 
+
+5) What is NLP
+
+6) What is GEN AI
+
+7) What is Agentic AI
+
+8) What is Open AI and Its LLMs
+
+9) What is Ollamma & why
+
+10) What is Spring AI & Why
+
+11) Spring AI with OPEN AI GPT model integration
+
+12) Chat Client & Chat Memory Advisors
+
+13) Spring AI with Local LLM integration
+
+14) Image Generation using Open AI
+
+15) What is Prompt Engineering & Key Components
+
+16) What is PromptTemplate
+
+17) What is Vector Store DB and RAG
+
+18) What is VectorStore interface
+
+19) Spring AI + Pinecone DB with RAG System Integration
+
+===============================================================
+
+Spring AI App Git Repo : https://github.com/ashokitschool/101-Spring-AI-App.git
+
+RAG APP Git Repo : https://github.com/ashokitschool/102-Spring-AI-RAG-App.git
+
+==============================================================================

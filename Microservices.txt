@@ -1,0 +1,704 @@
+
+==============
+Microservices
+==============
+
+1) Monolithic Architecture
+
+2) Drawbacks of Monolithic
+
+3) Microservices Introduction
+
+4) Pros & Cons with Microservices
+
+5) Service Registry (Eureka)
+
+6) Admin Server
+
+7) Zipkin Server
+
+8) FeignClient (Interservice communication)
+
+9) Microservices Load Balancing (Ribbon)
+
+10) Api Gateway (Filters + Routing)
+
+11) Config Server
+
+12) Circuit Breaker (Resilence4J)
+
+======================
+Monolith Architecture
+======================
+
+=> Developing all functionalities in one single application is called as Monolithic Architecture based application.
+
+		1) Presentation Layer
+
+		2) Business Layer
+
+		3) Data Access Layer
+
+=> Drawbacks with Monolith Architecture
+
+		1) Burden on server
+
+		2) Response Delay 
+
+		3) Single Point of Failure
+
+		4) Technology Dependent
+
+		5) Re-Deploy Entire application
+
+
+=> To overcome problems of Monolith Architecture, people are using Microservices Architecture.
+
+==================
+Microservices
+==================
+
+=> It is not a new technology.
+
+=> It is not a new programming language
+
+=> It is not a framework like spring and hibernate
+
+=> It is not a libraray
+
+~~~~~~~~~~~~~~~~~~ It is an Architectural Design Pattern. ~~~~~~~~~~~~~~~~~~~~~~
+
+=> It is universal and anyone can use this architecture to develop their applications.
+
+Note: The main aim of microservices design pattern is to develop application functionalities with loosely coupling.
+
+
+==============================
+Advantages with Microservices
+==============================
+
+1) Functionalities are loosely coupled
+
+2) Less Burden on servers
+
+3) Easy Maintenence
+
+4) No Single Point of failure
+
+5) Technology Independent
+
+6) Quick Releases
+
+
+==============================
+Challenges with Microservices
+==============================
+
+1) Bounded Context
+
+2) Repeated Configurations
+
+3) Visibility
+
+=> Bounded context means identifying how many microservices we need to develop for one application and deciding which functionality we need to add in which microservice.
+
+=> In Several microserices we need to write same configurations like data source, smtp, kafka, redis etc.
+
+=> In microservice architecture we might not get chance to work with all apis available in the application.
+
+
+=================================
+Spring Cloud with Microservices
+=================================
+
+1) Service Registry
+
+2) Admin Server
+
+3) Zipkin Server
+
+4) Config Server
+
+5) FeignClient
+
+6) ApiGateway
+
+Note: All the above components are optional to use. Depends on project requirement we can use them.
+
+
+==================
+Service Registry
+==================
+
+=> It is also called as Service Discovery or Discovery server.
+
+=> Service Registry is used to maintain all Microservices (apis) information at one place.
+
+=> Using service registry we can access below details of all microservices with UI. 
+
+		1) Name
+
+		2) Status (UP or DOWN)
+	
+		3) URL
+	
+		4) No.of Instances Available
+
+=> It will provide user interface to get Microservices information.
+
+=> We can use Eureka Server as service registry.
+
+Note: Eureka Server provided by Spring Cloud Libraries.
+
+=============
+Admin Server
+=============
+
+=> It is used to monitor and manage all the apis at one place.
+
+=> It provides beautiful user interface to access all apis actuator endpoints at one place.
+
+Ex: health, info, beans, url-mappings, env, loggers, thread dump, heap dump...
+
+==============
+Zipkin Server
+==============
+
+=> It is used for distributed tracing of our requests in microservices.
+
+Ex:
+
+1) Which request processed by which microservice.
+
+2) Time taken by microservice to process a request.
+
+3) Which microservices got involved in request processing.
+
+
+=> It provides beautiful user interface to trace microservices request processing details.
+
+
+================
+Config Server
+================
+
+=> It is used to load configuration properties from outside of the project.
+
+Note: Instead of keeping properties (datasource, smtp, kafka, redis...) in our application, we can load them from git repo by using config server.
+
+=> Config Server makes our application loosely coupled with properties file or yml file.
+
+
+============
+FeignClient
+============
+
+=> It is used for interservice communication.
+
+=> If one api communicate with another api with in the same application then it is called as Inter service communication.
+
+Note: FeignClient will provide Load Balancer support internally.
+
+
+
+=============
+API Gateway
+=============
+
+=> It acts as Entry point for all microservices / backend apis.
+
+=> It acts as mediator between frontend app and backend apis.
+
+=> In API Gateway we will write filters + Routings
+
+	### Filter : We can perform request pre-processing & post-processing
+
+			Ex: validate request
+
+
+	### Routing : Forward the request to actual backend api based on request url pattern.	
+
+		/order : ORDER-MS
+
+		/payment : PAYMENT-MS
+
+		/product : PRODUCT-MS
+
+
+
+===============================================================
+Steps to develop Service Registry Application (Eureka Server)
+===============================================================
+
+1) Create SpringBoot application with below dependency
+
+		- Eureka Server (spring-cloud-starter-netflix-eureka-server)
+
+	 	- devtools
+
+2) Configure "@EnableEurekaServer" annotation in boot start class
+
+3) Configure below properties in "application.properties" file
+
+```
+server.port=8761
+
+eureka.client.register-with-eureka=false
+```
+
+Note-1: If "Service-Registry" project port is 8761 then clients can discover service-registry and will register automatically with service-registry. 	 	
+
+Note-2 : If service-registry project running on any other port number (not 8761) then we have to register clients (microservices) with service-registry manually.
+
+
+4) Once application started we can access Eureka Dashboard using below URL
+
+		URL : http://localhost:8761/
+
+
+======================================
+Steps to develop Spring Admin-Server
+======================================		
+
+1) Create SpringBoot application with "Codecentric admin-server" dependency 
+
+2) Configure "@EnableAdminServer" annotation at start class.
+
+3) Change Port Number (Optional)
+
+4) Run the boot application and access Admin Server Dashboard using below URL
+
+		http://localhost:port/
+
+
+==================================
+Steps to work with Zipkin Server
+==================================
+
+1) Download Zipin Jar file 
+
+	URL : https://zipkin.io/pages/quickstart.html
+
+2) open cmd / gitbash and execute zipkin jar file with below command
+
+		$ java -jar <jar-name>
+
+3) Zipkin Server Runs on Port Number 9411	
+
+4) Access zipkin server dashboard
+
+		URL : http://localhost:9411/
+
+
+================================
+Developing Config Server App
+================================
+
+@@ Step-1 :: Create Git Repository and keep ymls files required for microservices
+
+Note: We should keep yml file name as application name.
+
+	if microservice name is "greet" then file name should be "greet.yml"
+
+	if microservice name is "welcome" then file name should be "welcome.yml"
+
+### Config files Git Repo : https://github.com/ashokitschool/configuration_properties
+
+
+@@ Step-2 :: Create Spring Starter application with below dependencies
+
+			1) config server
+
+			2) devtools
+
+
+@@ Step-3 :: Write @EnableConfigServer annotation at boot start class.
+
+
+@@ Step-4 :: Configure git repo url in application.properties file like below
+
+```
+spring.application.name=25-Config-Server
+
+server.port=2222
+
+spring.cloud.config.server.git.uri=https://github.com/ashokitschool/configuration_properties
+
+```
+
+
+@@ Step-5 :: Run the boot application and access Config Server using below URL
+
+		URL to verify : http://localhost:2222/application/default
+
+
+		URL : http://localhost:<port>/<application-name>/default
+
+
+================================================
+Steps to develop WELCOME-API (Microservice-1)
+================================================
+
+1) Create Spring Boot application with below dependencies
+
+			- web-starter
+			- actuator
+			- devtools
+
+			- eureka-discovery-client
+			- admin-client
+			- zipkin
+			- config-client
+
+2) Configure @EnableDiscoveryClient annotation at boot start class.			
+
+
+3) Configure below properties in application.properties file or application.yml file
+
+```
+spring.application.name=welcome
+
+spring.boot.admin.client.url=http://localhost:1111/
+
+spring.config.import: optional:configserver:http://localhost:3333
+
+server.port=8081
+
+management.endpoints.web.exposure.include='*'
+```
+
+
+4) Create RestController with required method
+
+```
+@RestController
+public class WelcomeRestController {
+
+	@Value("${msg}")
+	private String msg;
+	
+	@GetMapping("/welcome")
+	public String getWelcomeMsg() {
+		return msg;		
+	}
+}
+```
+
+5) Run the application and check in Eureka Dashboard (It should display in eureka dashboard)
+
+6) Check Admin Server Dashboard (It should display) (we can access application details from here)
+
+7) Send Request to REST API method
+
+8) Check Zipkin Server UI and click on Run Query button
+	(it will display trace-id with details)
+
+
+=========================================================================
+How to reload config properties dynamically without restarting servers 
+=========================================================================	
+
+=> We need to make below 3 changes in "config-client-app" to reload latest config props
+
+-> configure @RefreshScope annotation at Rest controller class
+
+
+-> Enable actuator endpoint 'refresh' in application.properites file
+
+		management.endpoints.web.exposure.include=*, refresh
+
+-> Send post request to actuator endpoint 'refresh' from postman
+
+			URL : http://localhost:8080/actuator/refresh
+
+-> After refresh, test your config client application
+
+
+==============================================
+Steps to develop GREET-API (Microservice-2)
+==============================================
+
+1) Create Spring Boot application with below dependencies
+
+			- web-starter
+			- actuator
+			- devtools
+
+			- eureka-discovery-client
+			- admin-client
+			- zipkin
+			- config-client
+
+			- open-feign
+
+2) Configure @EnableDiscoveryClient annotation at boot start class.
+
+
+3) Configure below properties in application.properties file or application.yml file
+
+```
+spring.application.name=greet
+
+spring.boot.admin.client.url=http://localhost:1111/
+
+spring.config.import: optional:configserver:http://localhost:3333
+
+server.port=9091
+
+management.endpoints.web.exposure.include='*'
+```
+
+4) Create RestController with required method
+
+```
+@RestController
+public class GreetRestController {
+	
+	@Value("${msg}")
+	private String greetApiMsg;
+
+	@GetMapping("/greet")
+	public String getGreetMsg() {
+		
+		String url = "http://localhost:8081/welcome";
+		
+		RestTemplate rt = new RestTemplate();
+		ResponseEntity<String> forEntity = rt.getForEntity(url,  String.class);
+		String welcomeApiMsg = forEntity.getBody();
+
+		return welcomeApiMsg + ", "+ greetApiMsg;
+	}
+
+}
+```
+
+5) Run the application and check in Eureka Dashboard (It should display in eureka dashboard)
+
+6) Check Admin Server Dashboard (It should display) (we can access application details from here)
+
+7) Send Request to REST API method
+
+8) Check Zipkin Server UI and click on Run Query button
+	(it will display trace-id with details)
+
+
+=============================================
+Interservice communication using FeignClient
+=============================================
+
+=> With in the application if one microservice is communicating with another microservice then it is called as Interservice communication.
+
+=> We will use @FeignClient for interservice communication.
+
+=> When we use FeignClient, no need to configure service URL for the communication.
+
+=> With "service-name" feign-client can fetch "service-url" from "service-registry" for inter service communication.
+
+Note: If micro-service is having multiple instances (urls) then FeignClient will apply Load Balancing to access the service.
+
+
+=> Add @EnableFeignClients annotation in GREET-API boot start class.
+
+=> Create FeignClient interface like below
+
+```
+@FeignClient(name="welcome")
+public interface WelcomeApiClient {	
+	
+	@GetMapping("/welcome")
+	public String invokeWelcomeApi();
+
+}
+```
+
+=> Inject feign client into GreetRestController like below
+
+```
+@RestController
+public class GreetRestController {
+
+	@Autowired
+	private WelcomeApiClient welcomeApiClient;
+
+	@GetMapping("/greet")
+	public String getGreetMsg() {
+
+		String welcomeApiResponse = welcomeApiClient.invokeWelcomeApi();
+
+
+		String greetApiResponse = "Good Morning";
+
+		return greetApiResponse + ", " + welcomeApiResponse;
+	}
+}
+```
+
+=> Run the applications and access greet-api method
+
+	(It should give combined response)
+
+----------------------------------------------------------------------
+
+
+==================
+Load Balancing
+==================
+
+=> If we run our application in one server then burden will be increased on that server.
+
+		1) Single Server should handle all the load
+
+		2) Burden on server
+
+		3) Response Delay
+
+		4) Server Can crash
+
+		5) Single Point of failure
+
+
+=> To overcome above problems we will run our application in multiple servers so that we can distribute the requests to multiple servers.
+
+=> Load Balancer is used to distribute requests to multiple servers.	
+
+=> We have below advantages with load balancer
+
+		1) Requests will be distributed to multiple servers
+
+		2) Less Burden on server
+
+		3) Quick Responses to clients
+
+		4) High Availability
+
+================================================
+Implementing Load Balancing For Welcome API
+================================================	
+
+1) Remove hardcoded server-port number from welcome-api properties/yml file
+
+2) Make changes in rest controller to send port-number in response like below.
+
+
+```
+@RestController
+@RefreshScope
+public class WelcomeRestController {
+
+	@Value("${msg}")
+	private String msg;
+
+	@Autowired
+	private Environment env;
+
+	@GetMapping("/welcome")
+	public String getWelcomeMsg() {
+
+		String port = env.getProperty("server.port");
+
+		return msg + "(" + port + ")";
+	}
+}
+```
+
+NOte: The above code changes will help us to understand from which server we are getting response.
+
+
+3) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8081 and apply and run it.
+
+4) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8082 and apply and run it.
+
+5) Right click => Run as => run configuration => select welcome-api => VM Arguments => -Dserver.port=8083 and apply and run it.
+
+Note: With this our welcome-api will run in 3 servers with 3 diff port numbers (3 instances).
+
+6) Check Eureka Dashboard and observe 3 instances available for welcome-api or not.
+
+7) Start Greet-api and send multiple requests to Greet-api and check Interservice communication behaviour.
+
+
+~~~~ Note : FeignClient will fetch welcome-api urls from service-registry and will invoke welcome-api 3 instances in round robbin fashion. ~~~~~
+
+
+========================================
+Working with Spring Cloud API Gateway
+========================================
+
+1) Create Spring boot application with below dependencies
+
+		-> eureka-client
+		-> cloud-reactive-gateway
+		-> devtools
+
+
+2) Configure @EnableDiscoveryClient annotation at boot start class
+
+
+3) Configure API Gateway Routings in application.yml file like below
+
+---
+spring:
+  application:
+    name: Api-Gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+          - id: api-1
+            uri: lb://welcome
+            predicates:
+              - Path=/welcome
+          - id: api-2
+            uri: lb://greet
+            predicates:
+              - Path=/greet
+server:
+  port: 4444
+...
+
+
+4) Create Filter to validate incoming request
+
+
+if request contains below header then it is valid request so we can process it.
+
+		SecretToken=ashokit@123
+
+if above header is not present then it is invalid request, don't process it (throw exception).
+
+```
+@Component
+public class RequestValidationFilter implements GlobalFilter {
+
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
+		System.out.println("filter () called...");
+
+		// Logic to validate the request
+
+		ServerHttpRequest request = exchange.getRequest();
+
+		HttpHeaders headers = request.getHeaders();
+
+		Set<String> keySet = headers.keySet();
+
+		if (!keySet.contains("SecretToken")) {
+			throw new RuntimeException("Invalid Request");
+		}
+
+		List<String> list = headers.get("SecretToken");
+		if (!list.get(0).equals("ashokit@123")) {
+			throw new RuntimeException("Invalid Request");
+		}
+
+		return chain.filter(exchange);
+	}
+
+}
+```
+
+5) Run the application and test api-gateway project using postman with header and without header.
+
+-----------------------------------------------------------------------------------------------------------
