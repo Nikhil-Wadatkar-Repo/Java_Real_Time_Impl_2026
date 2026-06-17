@@ -29,6 +29,7 @@ public class EmployeeDataLoader {
                         .hireDate(LocalDate.parse("2018-11-26"))
                         .jobId(105)
                         .salary(new BigDecimal("153744"))
+                        .localStatus("ACTIVE")
                         .managerId(25)
                         .departmentId(15)
                         .build());

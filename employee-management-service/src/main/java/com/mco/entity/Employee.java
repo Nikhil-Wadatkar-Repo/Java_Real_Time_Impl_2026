@@ -98,6 +98,9 @@ public class Employee {
     @Column
     private String status;
 
+    @Column
+    private String localStatus;
+
     @NotNull(message = "managerId is required")
     @Column(nullable = false)
     private Integer managerId;

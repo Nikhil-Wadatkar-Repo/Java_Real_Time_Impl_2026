@@ -8,7 +8,7 @@ const getEmployees = async (pageNumber = 0, pageSize = 50) => {
     const response = await axios.get(
       `${EMPLOYEE_API_BASE_URL}/paged?page=${pageNumber}&size=${pageSize}`,
     );
-    return response.data;
+    return response.data.content;
   } catch (error) {
     throw error;
   }

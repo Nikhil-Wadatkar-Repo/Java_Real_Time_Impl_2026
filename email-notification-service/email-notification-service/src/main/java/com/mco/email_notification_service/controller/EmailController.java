@@ -21,7 +21,7 @@ public class EmailController {
     private EmailService emailService;
 
     @PostMapping("/send")
-    public ResponseEntity<EmailResponse> sendEmail(@RequestBody EmailReqgituest emailRequest) {
+    public ResponseEntity<EmailResponse> sendEmail(@RequestBody EmailRequest emailRequest) {
         log.info("Received email request to send email to: {}", emailRequest.getTo());
         EmailResponse response = emailService.sendEmail(emailRequest);
 

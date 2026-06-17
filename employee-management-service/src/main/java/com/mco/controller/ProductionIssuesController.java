@@ -25,4 +25,10 @@ public class ProductionIssuesController {
     public ResponseEntity<List<EmployeeDepartmentView>> joinFetchDemo() {
         return ResponseEntity.ok(employeeService.findAllWithDepartmentNameJoinFetch());
     }
+
+
+    @GetMapping("/asyncUpdate")
+    public ResponseEntity<String> asyncUpdate() {
+        return ResponseEntity.ok(employeeService.processAllEmployees());
+    }
 }
