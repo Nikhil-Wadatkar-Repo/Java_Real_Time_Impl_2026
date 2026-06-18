@@ -1,4 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import APIServices from "./APIServices";
 import { AllCommunityModule } from "ag-grid-community";
 import { AgGridProvider, AgGridReact } from "ag-grid-react";
@@ -17,6 +24,7 @@ import {
   TextFilterModule,
   themeQuartz,
 } from "ag-grid-community";
+import { CounterContext } from "../App";
 function EmployeeAgGrid() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +33,7 @@ function EmployeeAgGrid() {
   const [pageSize, setPageSize] = useState(50);
   const [totalEmployees, setTotalEmployees] = useState(0);
   const [exporting, setExporting] = useState(false);
+  const [selectedRows, setSelectedRows] = useState({});
   ModuleRegistry.registerModules([
     RowSelectionModule,
     TextFilterModule,
@@ -51,10 +60,16 @@ function EmployeeAgGrid() {
         setLoading(false);
       }
     };
-
     fetchEmployees();
   }, [currentPage, pageSize]);
 
+  const getEmployees = useCallback(async () => {
+    const response = await APIServices.getEmployees(currentPage, pageSize);
+
+    const data = await response.json();
+
+    setEmployees(data);
+  }, [currentPage, pageSize]);
   const [columnDefs] = useState([
     {
       field: "employeeId",
@@ -168,12 +183,56 @@ function EmployeeAgGrid() {
     };
   }, []);
   const myTheme = themeBalham.withParams({ accentColor: "red" });
+  // const { employeeContext, setEmployeeContext } = useContext(CounterContext);
+  const { empContext, setEmpContext } = useContext(CounterContext);
+  const onRowSelected = useCallback((event) => {
+    if (event.node.isSelected()) {
+      console.log(
+        event.data.firstName +
+          " " +
+          event.data.lastName +
+          " selected: " +
+          event.node.isSelected(),
+      );
+      let rowInfo = {
+        firstName: event.data.firstName,
+        lastName: event.data.lastName,
+        email: event.data.email,
+        phoneNumber: event.data.phoneNumber,
+        hireDate: event.data.hireDate,
+        dateOfBirth: event.data.dateOfBirth,
+        department: event.data.department,
+        jobId: event.data.jobId,
+        address: event.data.address,
+        city: event.data.city,
+        state: event.data.state,
+        country: event.data.country,
+        lastWorkingDate: event.data.lastWorkingDate,
+        status: event.data.status,
+      };
+      console.log("====================================");
+      console.log("Selected row: ", rowInfo);
+      console.log("====================================");
+      setSelectedRows(rowInfo);
+    }
+  }, []);
   return (
-    <div className="container-fluid py-3">
+    <div className="container-fluid">
       {/* Top Buttons */}
       <div className="row g-2 mb-3">
         <div className="col-6 col-md-auto">
-          <button className="btn btn-primary w-100">Export PDF</button>
+          Page size:
+          <select
+            className="form-select"
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+            <option value={200}>200</option>
+          </select>
         </div>
 
         <div className="col-6 col-md-auto">
@@ -185,11 +244,21 @@ function EmployeeAgGrid() {
         </div>
 
         <div className="col-6 col-md-auto">
-          <button className="btn btn-warning w-100">Edit</button>
+          <button
+            className="btn btn-warning w-100"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >
+            Prev
+          </button>
         </div>
 
         <div className="col-6 col-md-auto">
-          <button className="btn btn-danger w-100">Delete</button>
+          <button
+            className="btn btn-danger w-100"
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >
+            Next
+          </button>
         </div>
       </div>
 
@@ -210,6 +279,7 @@ function EmployeeAgGrid() {
           rowSelection={rowSelection}
           pagination={true}
           paginationAutoPageSize={true}
+          onRowSelected={onRowSelected}
         />
       </div>
     </div>

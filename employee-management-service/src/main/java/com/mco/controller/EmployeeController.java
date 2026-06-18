@@ -49,17 +49,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.findAll());
     }
 
-    @GetMapping({"/paged", "/paged/{page}/{size}"})
-    public ResponseEntity<Page<Employee>> getPagedEmployees(
-            @RequestParam(name = "page", defaultValue = "0") @Min(0) int page,
-            @RequestParam(name = "size", defaultValue = "10") @Min(1) int size,
-            @PathVariable(name = "page", required = false) Integer pagePath,
-            @PathVariable(name = "size", required = false) Integer sizePath) {
-        int resolvedPage = pagePath != null ? pagePath : page;
-        int resolvedSize = sizePath != null ? sizePath : size;
-        int pageSize = Math.min(resolvedSize, 50);
-        return ResponseEntity.ok(employeeService.findPaged(resolvedPage, pageSize));
-    }
+
 
     @PutMapping("/{employeeId}")
     public ResponseEntity<Employee> update(@PathVariable Long employeeId, @Valid @RequestBody Employee employee) {
