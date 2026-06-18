@@ -26,6 +26,8 @@ import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -128,11 +130,13 @@ public class EmployeeService {
         return views;
     }
 
+    @Cacheable(cacheNames = "employees", key = "#employeeId")
     public Employee findById(Long employeeId) {
         return employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee not found with id " + employeeId));
     }
 
     @Transactional
+    @CacheEvict(cacheNames = "employees", key = "#employeeId")
     public Employee update(Long employeeId, Employee employee) {
         Employee existingEmployee = findById(employeeId);
 
@@ -154,6 +158,7 @@ public class EmployeeService {
     }
 
     @Transactional
+    @CacheEvict(cacheNames = "employees", key = "#employeeId")
     public void delete(Long employeeId) {
         Employee existingEmployee = findById(employeeId);
         employeeRepository.delete(existingEmployee);
