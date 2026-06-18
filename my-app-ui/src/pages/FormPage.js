@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Form.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import APIServices from "./APIServices";
 
 function FormPage() {
   const nav = useNavigate();
+  const location=useLocation();
+  const employee = location.state;
   const [formData, setFormData] = useState({
     employeeId: "",
     firstName: "",
@@ -121,7 +123,11 @@ function FormPage() {
     });
     setErrors({});
   };
-
+useEffect(()=>{
+  if(employee.employeeId != undefined){
+    setFormData(employee);
+  }
+},[])
   return (
     <div className="form-container">
       <div className="container mt-5 mb-5">

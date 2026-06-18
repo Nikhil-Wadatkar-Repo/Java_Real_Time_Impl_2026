@@ -25,6 +25,7 @@ import {
   themeQuartz,
 } from "ag-grid-community";
 import { CounterContext } from "../App";
+import { useNavigate } from "react-router-dom";
 function EmployeeAgGrid() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -183,39 +184,47 @@ function EmployeeAgGrid() {
     };
   }, []);
   const myTheme = themeBalham.withParams({ accentColor: "red" });
+  const navigation=useNavigate();
   // const { employeeContext, setEmployeeContext } = useContext(CounterContext);
-  const { empContext, setEmpContext } = useContext(CounterContext);
+  // const { empContext, setEmpContext } = useContext(CounterContext);
   const onRowSelected = useCallback((event) => {
     if (event.node.isSelected()) {
-      console.log(
-        event.data.firstName +
-          " " +
-          event.data.lastName +
-          " selected: " +
-          event.node.isSelected(),
-      );
       let rowInfo = {
+        employeeId: event.data.employeeId,
         firstName: event.data.firstName,
         lastName: event.data.lastName,
         email: event.data.email,
         phoneNumber: event.data.phoneNumber,
-        hireDate: event.data.hireDate,
+        gender: event.data.gender,
         dateOfBirth: event.data.dateOfBirth,
-        department: event.data.department,
-        jobId: event.data.jobId,
         address: event.data.address,
         city: event.data.city,
         state: event.data.state,
         country: event.data.country,
+        designation: event.data.designation,
+        jobId: event.data.jobId,
+        departmentId: event.data.departmentId,
+        // department: "",
+        managerName: event.data.managerName,
+        managerId: event.data.managerId,
+        hireDate: event.data.hireDate,
         lastWorkingDate: event.data.lastWorkingDate,
+        employmentType: event.data.employmentType,
         status: event.data.status,
+        localStatus: event.data.localStatus,
+        salary: event.data.salary,
+        bonus: event.data.bonus,
       };
-      console.log("====================================");
-      console.log("Selected row: ", rowInfo);
-      console.log("====================================");
+
       setSelectedRows(rowInfo);
     }
   }, []);
+
+  const transferData =()=>{
+    navigation("/form",{
+      state:selectedRows
+    })
+  }
   return (
     <div className="container-fluid">
       {/* Top Buttons */}
@@ -236,7 +245,7 @@ function EmployeeAgGrid() {
         </div>
 
         <div className="col-6 col-md-auto">
-          <button className="btn btn-secondary w-100">Trigger Email</button>
+          <button className="btn btn-secondary w-100" onClick={transferData}>Navigate</button>
         </div>
 
         <div className="col-6 col-md-auto">

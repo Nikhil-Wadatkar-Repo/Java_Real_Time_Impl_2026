@@ -31,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <CounterContext.Provider value={{ employeeContext, setEmployeeContext }}>
+     
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/form">
@@ -134,10 +134,10 @@ function App() {
           </div>
         </div>
       </div> */}
-      </CounterContext.Provider>
+     
     </BrowserRouter>
   );
 }
 
 export default App;
-export { CounterContext, CounterProvider };
+
