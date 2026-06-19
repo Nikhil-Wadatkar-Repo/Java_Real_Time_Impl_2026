@@ -2,7 +2,7 @@ package com.mco.controller;
 
 import com.mco.dto.EmployeeDepartmentView;
 import com.mco.entity.Employee;
-import com.mco.service.EmployeeService;
+import com.mco.service.ProductionService;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 public class ProductionIssuesController {
-    private final EmployeeService employeeService;
+    private final ProductionService employeeService;
 
     @GetMapping("/n-plus-one-demo")
     public ResponseEntity<List<EmployeeDepartmentView>> nPlusOneDemo() {
