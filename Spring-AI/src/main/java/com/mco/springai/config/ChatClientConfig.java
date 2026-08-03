@@ -1,8 +1,9 @@
 package com.mco.springai.config;
 
-
+import com.mco.springai.advisors.TokenUsageAuditAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +15,11 @@ public class ChatClientConfig {
 
     @Bean
     public ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
-        var options = OpenAiChatOptions.builder()
-                .model("gpt-4o-mini")
-                .temperature(0.8);
+        var options = OpenAiChatOptions.builder().model("gpt-5.4-mini").temperature(0.8);
         return chatClientBuilder
                 .defaultOptions(options)
                 .defaultAdvisors(List.of(new SimpleLoggerAdvisor(),
-                        new com.mco.springai.advisors.TokenUsageAuditAdvisor()))
+                        new TokenUsageAuditAdvisor()))
                 .defaultSystem("""
                         You are an internal HR assistant. Your role is to help\s
                         employees with questions related to HR policies, such as\s

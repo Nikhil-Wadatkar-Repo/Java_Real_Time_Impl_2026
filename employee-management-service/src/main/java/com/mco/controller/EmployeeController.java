@@ -1,7 +1,6 @@
 package com.mco.controller;
 
 import java.util.List;
-
 import com.mco.entity.Employee;
 import com.mco.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -12,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/employeeAPI")
+//@RequestMapping("/employeeAPI")
 @Validated
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor

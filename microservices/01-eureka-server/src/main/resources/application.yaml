@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 8761
+  
+#   used to unregister itself with eureka server
+eureka:
+  client:
+     register-with-eureka: false
+  

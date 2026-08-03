@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const EMPLOYEE_API_BASE_URL = "http://localhost:9092/employeeAPI";
-const PROD_ISSUE_API_BASE_URL = "http://localhost:9092/api/prodIssues";
+const EMPLOYEE_API_BASE_URL = "http://localhost:9092";
+const PROD_ISSUE_API_BASE_URL = "http://localhost:9092";
 
 const getEmployees = async (pageNumber, pageSize = 50) => {
   try {

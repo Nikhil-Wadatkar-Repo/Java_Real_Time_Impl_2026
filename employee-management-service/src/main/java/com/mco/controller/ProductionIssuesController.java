@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/prodIssues")
+//@RequestMapping("/api/prodIssues")
 @AllArgsConstructor
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 public class ProductionIssuesController {
