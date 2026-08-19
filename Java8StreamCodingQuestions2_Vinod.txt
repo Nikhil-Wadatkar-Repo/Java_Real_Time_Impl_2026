@@ -1,0 +1,906 @@
+Java8 Stream Coding Questions
+=============================
+1.Filter Even Numbers from a List
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+List<Integer> evenNumbers = numbers.stream()
+    .filter(n -> n % 2 == 0)
+    .collect(Collectors.toList());
+System.out.println(evenNumbers); // Output: [2, 4, 6]
+===========================================================================================
+2. Find Maximum in a List
+Question: Find the maximum number from a list of integers.
+
+List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);
+int maxNumber = numbers.stream()
+    .max(Integer::compare)
+    .orElseThrow();
+System.out.println(maxNumber); // Output: 50
+
+===========================================================================================
+3. Sort a List
+Question: Sort a list of integers in descending order.
+
+List<Integer> numbers = Arrays.asList(3, 5, 1, 4, 2);
+List<Integer> sortedNumbers = numbers.stream()
+    .sorted(Comparator.reverseOrder())
+    .collect(Collectors.toList());
+System.out.println(sortedNumbers); // Output: [5, 4, 3, 2, 1]
+
+===========================================================================================
+4. Sum of Numbers in a List
+Question: Calculate the sum of all numbers in a list.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+int sum = numbers.stream()
+    .mapToInt(Integer::intValue)
+    .sum();
+System.out.println(sum); // Output: 15
+
+===========================================================================================
+5. Find Duplicate Elements in a List
+Question: Identify duplicate elements in a list.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 2, 5, 1);
+Set<Integer> unique = new HashSet<>();
+Set<Integer> duplicates = numbers.stream()
+    .filter(n -> !unique.add(n))
+    .collect(Collectors.toSet());
+System.out.println(duplicates); // Output: [1, 2]
+
+===========================================================================================
+6. Flatten a List of Lists
+Question: Given a list of lists, flatten it into a single list.
+
+List<List<Integer>> listOfLists = Arrays.asList(
+    Arrays.asList(1, 2, 3),
+    Arrays.asList(4, 5),
+    Arrays.asList(6, 7, 8, 9)
+);
+List<Integer> flattenedList = listOfLists.stream()
+    .flatMap(List::stream)
+    .collect(Collectors.toList());
+System.out.println(flattenedList); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+===========================================================================================
+7. Parallel Stream to Compute Sum
+Question: Use parallel streams to compute the sum of numbers.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+int sum = numbers.f2()
+    .mapToInt(Integer::intValue)
+    .sum();
+System.out.println(sum); // Output: 15
+
+===========================================================================================
+8. Create Custom Collector
+Question: Create a custom collector to join strings with a delimiter.
+
+List<String> words = Arrays.asList("Java", "Stream", "API");
+String joined = words.stream()
+    .collect(Collectors.joining(", "));
+System.out.println(joined); // Output: Java, Stream, API
+
+
+===========================================================================================
+9. Remove Null Values
+Question: Remove null values from a list using filter.
+
+List<String> words = Arrays.asList("Java", null, "Stream", null, "API");
+List<String> nonNullWords = words.stream()
+    .filter(Objects::nonNull)
+    .collect(Collectors.toList());
+System.out.println(nonNullWords); // Output: [Java, Stream, API]
+
+
+===========================================================================================
+10. Calculate Average of Numbers
+Question: Calculate the average of a list of integers.
+
+List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);
+double average = numbers.stream()
+    .mapToInt(Integer::intValue)
+    .average()
+    .orElse(0.0);
+System.out.println(average); // Output: 30.0
+
+
+===========================================================================================
+11. Collect Map from List
+Question: Convert a list of strings into a map with the string as the key and its length as the value.
+
+List<String> words = Arrays.asList("Java", "Stream", "API");
+Map<String, Integer> wordLengthMap = words.stream()
+    .collect(Collectors.toMap(word -> word, String::length));
+System.out.println(wordLengthMap); // Output: {Java=4, Stream=6, API=3}
+
+
+===========================================================================================
+12. Partition Numbers into Even and Odd
+Question: Partition a list of numbers into even and odd.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+Map<Boolean, List<Integer>> partitioned = numbers.stream()
+    .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+System.out.println(partitioned);
+// Output: {false=[1, 3, 5, 7, 9], true=[2, 4, 6, 8]}
+
+
+===========================================================================================
+13. Find Nth Largest Element in a List
+Question: Find the 3rd largest element in a list.
+
+List<Integer> numbers = Arrays.asList(10, 20, 50, 40, 30);
+int nthLargest = numbers.stream()
+    .sorted(Comparator.reverseOrder())
+    .skip(2)
+    .findFirst()
+    .orElseThrow();
+System.out.println(nthLargest); // Output: 30
+
+
+==========================================================================================
+
+14. Filter and Convert Map to List
+Question: Given a map, filter entries with values greater than 10 and collect keys into a list.
+
+Map<String, Integer> map = Map.of("A", 5, "B", 15, "C", 10, "D", 20);
+List<String> keys = map.entrySet().stream()
+    .filter(entry -> entry.getValue() > 10)
+    .map(Map.Entry::getKey)
+    .collect(Collectors.toList());
+System.out.println(keys); // Output: [B, D]
+
+==========================================================================================
+15. Remove Duplicates Without Collectors
+Question: Remove duplicates from a list using distinct().
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 2, 4, 3, 5);
+List<Integer> uniqueNumbers = numbers.stream()
+    .distinct()
+    .collect(Collectors.toList());
+System.out.println(uniqueNumbers); // Output: [1, 2, 3, 4, 5]
+
+
+
+==========================================================================================
+16. Find Common Elements Between Two Lists
+Question: Find common elements between two lists.
+
+List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> list2 = Arrays.asList(3, 4, 5, 6, 7);
+List<Integer> common = list1.stream()
+    .filter(list2::contains)
+    .collect(Collectors.toList());
+System.out.println(common); // Output: [3, 4, 5]
+
+
+
+==========================================================================================
+17. Find the Sum of Squares of Even Numbers
+Question: Calculate the sum of squares of all even numbers in a list.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+int sumOfSquares = numbers.stream()
+    .filter(n -> n % 2 == 0)
+    .mapToInt(n -> n * n)
+    .sum();
+System.out.println(sumOfSquares); // Output: 56 (2^2 + 4^2 + 6^2)
+
+
+==========================================================================================
+18. Skip and Limit Elements
+Question: Skip the first 3 elements and limit the result to the next 2.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+List<Integer> result = numbers.stream()
+    .skip(3)
+    .limit(2)
+    .collect(Collectors.toList());
+System.out.println(result); // Output: [4, 5]
+
+
+==========================================================================================
+19. Compute Cartesian Product of Two Lists
+Question: Compute the Cartesian product of two lists of integers.
+
+List<Integer> list1 = Arrays.asList(1, 2, 3);
+List<Integer> list2 = Arrays.asList(4, 5);
+List<String> cartesianProduct = list1.stream()
+    .flatMap(i -> list2.stream().map(j -> "(" + i + "," + j + ")"))
+    .collect(Collectors.toList());
+System.out.println(cartesianProduct); // Output: [(1,4), (1,5), (2,4), (2,5), (3,4), (3,5)]
+
+==========================================================================================
+20. Find Top N Highest Scoring Students
+Question: From a list of students, find the top 3 by score.
+
+class Student {
+    String name;
+    int score;
+    Student(String name, int score) { this.name = name; this.score = score; }
+}
+
+List<Student> students = Arrays.asList(
+    new Student("Alice", 85),
+    new Student("Bob", 92),
+    new Student("Charlie", 88),
+    new Student("Dave", 78),
+    new Student("Eve", 91)
+);
+
+List<String> topStudents = students.stream()
+    .sorted(Comparator.comparingInt((Student s) -> s.score).reversed())
+    .limit(3)
+    .map(s -> s.name)
+    .collect(Collectors.toList());
+System.out.println(topStudents); // Output: [Bob, Eve, Charlie]
+
+
+==========================================================================================
+21. Find Median of a List
+Question: Find the median of a list of integers.
+
+List<Integer> numbers = Arrays.asList(3, 1, 4, 2, 5);
+List<Integer> sorted = numbers.stream().sorted().collect(Collectors.toList());
+double median = (sorted.size() % 2 == 0)
+    ? (sorted.get(sorted.size() / 2 - 1) + sorted.get(sorted.size() / 2)) / 2.0
+    : sorted.get(sorted.size() / 2);
+System.out.println(median); // Output: 3.0
+
+
+==========================================================================================
+22. Collect Nested Map by Grouping
+Question: Group employees by department and then by age.
+
+class Employee {
+    String name, department;
+    int age;
+    Employee(String name, String department, int age) {
+        this.name = name;
+        this.department = department;
+        this.age = age;
+    }
+}
+
+List<Employee> employees = Arrays.asList(
+    new Employee("Alice", "HR", 25),
+    new Employee("Bob", "IT", 30),
+    new Employee("Charlie", "HR", 30),
+    new Employee("Dave", "IT", 25)
+);
+
+Map<String, Map<Integer, List<String>>> grouped = employees.stream()
+    .collect(Collectors.groupingBy(e -> e.department,
+        Collectors.groupingBy(e -> e.age, 
+            Collectors.mapping(e -> e.name, Collectors.toList()))));
+System.out.println(grouped);
+// Output: {HR={25=[Alice], 30=[Charlie]}, IT={30=[Bob], 25=[Dave]}}
+
+
+==========================================================================================
+23. Generate Fibonacci Sequence Using Streams
+Question: Generate the first N numbers in the Fibonacci sequence.
+
+int n = 10;
+List<Integer> fibonacci = Stream.iterate(new int[]{0, 1}, arr -> new int[]{arr[1], arr[0] + arr[1]})
+    .limit(n)
+    .map(arr -> arr[0])
+    .collect(Collectors.toList());
+System.out.println(fibonacci); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+
+==========================================================================================
+24. Find Employees with Highest Salary in Each Department
+Question: From a list of employees, find the highest-paid employee in each department.
+
+class Employee {
+    String name, department;
+    double salary;
+    Employee(String name, String department, double salary) {
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+    }
+}
+
+List<Employee> employees = Arrays.asList(
+    new Employee("Alice", "HR", 50000),
+    new Employee("Bob", "IT", 80000),
+    new Employee("Charlie", "IT", 75000),
+    new Employee("Dave", "HR", 60000),
+    new Employee("Eve", "Finance", 70000)
+);
+
+Map<String, Employee> highestPaid = employees.stream()
+    .collect(Collectors.groupingBy(
+        e -> e.department,
+        Collectors.collectingAndThen(
+            Collectors.maxBy(Comparator.comparingDouble(e -> e.salary)),
+            Optional::get
+        )
+    ));
+System.out.println(highestPaid);
+
+// Output: {HR=Dave, IT=Bob, Finance=Eve}
+
+==========================================================================================
+25. Calculate the Product of All Numbers
+Question: Calculate the product of all numbers in a list using reduce.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+int product = numbers.stream()
+    .reduce(1, (a, b) -> a * b);
+System.out.println(product); // Output: 120
+
+
+==========================================================================================
+26. Generate Random Numbers Using Stream
+Question: Generate a list of random numbers using Stream.
+
+List<Integer> randomNumbers = new Random().ints(5, 1, 100) // 5 numbers in range 1-100
+    .boxed()
+    .collect(Collectors.toList());
+System.out.println(randomNumbers); // Example Output: [45, 23, 89, 12, 78]
+
+==========================================================================================
+27. Given the list of integers, find the first element of the list using Stream functions?
+
+List<Integer> myList = Arrays.asList(10,15,8,49,25,98,98,32,15);
+          myList.stream()
+                .findFirst()
+                .ifPresent(System.out::println);
+
+      /* or can also try below single line code */
+      /* When numbers are given as Array int[] arr = {10,15,8,49,25,98,98,32,15}; */
+      Arrays.stream(arr).boxed().findFirst().ifPresent(System.out::print);
+
+	//output :: 10
+
+==========================================================================================
+28. Given a list of integers, find the total number of elements present in the list using Stream functions?
+
+import java.util.*;
+import java.util.stream.*;
+
+public class FindTheTotalNumberOfElements{
+  public static void main(String args[]) {
+          List<Integer> myList = Arrays.asList(10,15,8,49,25,98,98,32,15);
+          long count =  myList.stream()
+                              .count();
+          System.out.println(count);   
+
+/* or can also try below line code */
+/* When numbers are given as Array int[] arr = {10,15,8,49,25,98,98,32,15}; */
+      Arrays.stream(arr).boxed().count();             
+  }
+}//Output:9
+
+
+==========================================================================================
+29. From the given list of integers, print the numbers which are multiples of 5?
+
+import java.util.Arrays;
+import java.util.List;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        List<Integer> listOfIntegers = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
+         
+        listOfIntegers.stream().filter(i -> i % 5 == 0).forEach(System.out::println);
+    }
+} //Output :45 15 75
+
+==========================================================================================
+30. Given a list of integers, find maximum and minimum of those numbers?
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        List<Integer> listOfIntegers = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
+         
+        int max = listOfIntegers.stream().max(Comparator.naturalOrder()).get();
+         
+        System.out.println("Maximum Element : "+max);
+         
+        int min = listOfIntegers.stream().min(Comparator.naturalOrder()).get();
+         
+        System.out.println("Minimum Element : "+min);
+    }
+}
+//Output :
+//Maximum Element : 89
+//Minimum Element : 12
+
+==========================================================================================
+31.  How do you merge two unsorted arrays into single sorted array using Java 8 streams?
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        int[] a = new int[] {4, 2, 7, 1};
+         
+        int[] b = new int[] {8, 3, 9, 5};
+         
+        int[] c = IntStream.concat(Arrays.stream(a), Arrays.stream(b)).sorted().toArray();
+         
+        System.out.println(Arrays.toString(c));
+    }
+}
+//Output :[1, 2, 3, 4, 5, 7, 8, 9]
+
+
+==========================================================================================
+32.  How do you merge two unsorted arrays into single sorted array without duplicates?
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        int[] a = new int[] {4, 2, 5, 1};
+         
+        int[] b = new int[] {8, 1, 9, 5};
+         
+        int[] c = IntStream.concat(Arrays.stream(a), Arrays.stream(b)).sorted().distinct().toArray();
+         
+        System.out.println(Arrays.toString(c));
+    }
+}
+//Output :[1, 2, 4, 5, 8, 9]
+
+
+==========================================================================================
+33. How do you get three maximum numbers and three minimum numbers from the given list of integers?
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        List<Integer> listOfIntegers = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
+         
+        //3 minimum Numbers
+         
+        System.out.println("-----------------");
+         
+        System.out.println("Minimum 3 Numbers");
+         
+        System.out.println("-----------------");
+         
+        listOfIntegers.stream().sorted().limit(3).forEach(System.out::println);
+         
+        //3 Maximum Numbers
+         
+        System.out.println("-----------------");
+         
+        System.out.println("Maximum 3 Numbers");
+         
+        System.out.println("-----------------");
+         
+listOfIntegers.stream().sorted(Comparator.reverseOrder()).limit(3).forEach(System.out::println);
+    }
+}
+Output :
+
+—————–
+Minimum 3 Numbers
+—————–
+12
+15
+24
+—————–
+Maximum 3 Numbers
+—————–
+89
+75
+56
+
+==========================================================================================
+34. Find sum of all digits of a number in Java 8?
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        int i = 15623;
+         
+        Integer sumOfDigits = Stream.of(String.valueOf(i).split("")).collect(Collectors.summingInt(Integer::parseInt));
+         
+        System.out.println(sumOfDigits);
+    }
+}
+//Output :17
+
+
+==========================================================================================
+35. Find second largest number in an integer array?
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        List<Integer> listOfIntegers = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
+         
+        Integer secondLargestNumber = listOfIntegers.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+         
+        System.out.println(secondLargestNumber);
+    }
+}
+//Output :75
+
+
+==========================================================================================
+36. How do you find common elements between two arrays?
+
+import java.util.Arrays;
+import java.util.List;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        List<Integer> list1 = Arrays.asList(71, 21, 34, 89, 56, 28);
+         
+        List<Integer> list2 = Arrays.asList(12, 56, 17, 21, 94, 34);
+         
+        list1.stream().filter(list2::contains).forEach(System.out::println);
+    }
+}
+Output :
+21
+34
+56
+
+==========================================================================================
+37. Sort a list of integers
+
+Question:
+Sort a list of integers in ascending and descending order using streams.
+
+List<Integer> nums = Arrays.asList(5, 1, 9, 3, 7);
+
+List<Integer> asc = nums.stream()
+                        .sorted()
+                        .toList();
+
+List<Integer> desc = nums.stream()
+                         .sorted(Comparator.reverseOrder())
+                         .toList();
+
+System.out.println(asc);
+System.out.println(desc);
+
+
+==========================================================================================
+38. Check if no element is null
+
+Question:
+Use noneMatch() to verify the list has no null values.
+
+List<String> names = Arrays.asList("Java", "Spring", "Boot");
+
+boolean result = names.stream()
+                      .noneMatch(Objects::isNull);
+
+System.out.println(result);
+
+
+==========================================================================================
+39. Sum of all numbers in a list
+
+Question:
+Find the sum of integers in a list using streams.
+
+List<Integer> nums = Arrays.asList(10, 20, 30, 40);
+
+int sum = nums.stream()
+              .mapToInt(Integer::intValue)
+              .sum();
+
+System.out.println(sum);
+
+
+==========================================================================================
+40. Get top 3 highest numbers from a list
+
+Question:
+Find top 3 highest numbers.
+
+List<Integer> nums = Arrays.asList(10, 40, 20, 50, 60, 30);
+
+List<Integer> top3 = nums.stream()
+                         .sorted(Comparator.reverseOrder())
+                         .limit(3)
+                         .toList();
+
+System.out.println(top3); 
+
+==========================================================================================
+41. Skip first 3 elements from a list
+
+Question:
+Skip first 3 elements and print remaining.
+
+List<Integer> nums = Arrays.asList(10, 20, 30, 40, 50, 60);
+
+List<Integer> result = nums.stream()
+                           .skip(3)
+                           .toList();
+
+System.out.println(result);
+
+==========================================================================================
+42. Get employee names whose salary is greater than 50000
+List<String> result = employees.stream()
+        .filter(e -> e.getSalary() > 50000)
+        .map(Employee::getName)
+        .toList();
+
+System.out.println(result);
+
+==========================================================================================
+43. Find highest-paid employee
+Employee highest = employees.stream()
+        .max(Comparator.comparingDouble(Employee::getSalary))
+        .orElse(null);
+
+System.out.println(highest.getName());
+
+==========================================================================================
+44. Missing number from 1 to N using Stream + sum
+Example
+
+List: [1, 2, 3, 5]
+Expected range: 1 to 5
+Missing number = 4
+
+Code
+import java.util.*;
+import java.util.stream.*;
+
+public class MissingNumberUsingStream {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1, 2, 3, 5);
+        int n = 5;
+
+        int expectedSum = IntStream.rangeClosed(1, n).sum();
+        int actualSum = list.stream()
+                            .mapToInt(Integer::intValue)
+                            .sum();
+
+        int missingNumber = expectedSum - actualSum;
+
+        System.out.println("Missing number: " + missingNumber);
+    }
+}
+
+==========================================================================================
+45. Find numbers starting with 1 from a list
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class StartsWithOne {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(10, 15, 23, 18, 45, 100, 91);
+
+        List<Integer> result = list.stream()
+                .filter(n -> String.valueOf(n).startsWith("1"))
+                .collect(Collectors.toList());
+
+        System.out.println(result); // [10, 15, 18, 100]
+    }
+} 
+
+==========================================================================================
+46. Find the sum of all numbers in a list
+import java.util.*;
+import java.util.stream.*;
+
+public class SumExample {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(10, 20, 30, 40);
+
+        int sum = list.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println(sum); // 100
+    }
+}
+
+==========================================================================================
+47. Merge two unsorted lists into one sorted list
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class MergeAndSort {
+    public static void main(String[] args) {
+        List<Integer> list1 = Arrays.asList(5, 1, 9);
+        List<Integer> list2 = Arrays.asList(3, 7, 2);
+
+        List<Integer> result = Stream.concat(list1.stream(), list2.stream())
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println(result); // [1, 2, 3, 5, 7, 9]
+    }
+}
+
+==========================================================================================
+48. Merge two lists and remove duplicates
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class MergeDistinct {
+    public static void main(String[] args) {
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4);
+        List<Integer> list2 = Arrays.asList(3, 4, 5, 6);
+
+        List<Integer> result = Stream.concat(list1.stream(), list2.stream())
+                .distinct()
+                .collect(Collectors.toList());
+
+        System.out.println(result); // [1, 2, 3, 4, 5, 6]
+    }
+}
+
+==========================================================================================
+49. Find common elements between two lists
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class CommonElements {
+    public static void main(String[] args) {
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(4, 5, 6, 7);
+
+        List<Integer> common = list1.stream()
+                .filter(list2::contains)
+                .collect(Collectors.toList());
+
+        System.out.println(common); // [4, 5]
+    }
+}
+
+Better version for performance
+Set<Integer> set = new HashSet<>(list2);
+List<Integer> common = list1.stream()
+        .filter(set::contains)
+        .collect(Collectors.toList());
+
+==========================================================================================
+50. Find the maximum and minimum number in a list
+import java.util.*;
+
+public class MinMax {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(12, 45, 2, 67, 34);
+
+        int max = list.stream().max(Integer::compareTo).orElseThrow();
+        int min = list.stream().min(Integer::compareTo).orElseThrow();
+
+        System.out.println("Max: " + max);
+        System.out.println("Min: " + min);
+    }
+}
+
+==========================================================================================
+51. Find missing number from 1 to N
+import java.util.*;
+import java.util.stream.IntStream;
+
+public class MissingNumber {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1, 2, 3, 5);
+        int n = 5;
+
+        int missing = IntStream.rangeClosed(1, n).sum()
+                     - list.stream().mapToInt(Integer::intValue).sum();
+
+        System.out.println(missing); // 4
+    }
+}
+
+==========================================================================================
+52. Check if all elements are unique
+import java.util.*;
+
+public class UniqueCheck {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+        boolean allUnique = list.size() == new HashSet<>(list).size();
+        System.out.println(allUnique); // true
+
+        //OR
+        
+        boolean allUnique = list.size() == list.stream().distinct().count();
+        System.out.println(allUnique); // true
+
+        //OR using allMatch() methods
+        Set<Integer> seen = new HashSet<>();
+        boolean allUnique = list.stream().allMatch(seen::add);
+    }
+}
+
+==========================================================================================
+53. Check if all numbers are positive
+List<Integer> nums = Arrays.asList(10, 20, 30, 40);
+
+boolean result = nums.stream()
+        .allMatch(n -> n > 0);
+
+System.out.println(result);
+
+==========================================================================================
+54. Check if any number is negative
+List<Integer> nums = Arrays.asList(10, -2, 30, 40);
+
+boolean result = nums.stream()
+        .anyMatch(n -> n < 0);
+
+System.out.println(result);
+
+==========================================================================================
+55. Sort employees by salary
+List<Employee> result = employees.stream()
+        .sorted(Comparator.comparingDouble(Employee::getSalary))
+        .toList();
+
+System.out.println(result);
+
+==========================================================================================
+56. Find lowest-paid employee
+Employee lowest = employees.stream()
+        .min(Comparator.comparingDouble(Employee::getSalary))
+        .orElse(null);
+
+System.out.println(lowest);
+
+==========================================================================================
+57. Convert employee list to map of id -> name
+Map<Integer, String> result = employees.stream()
+        .collect(Collectors.toMap(Employee::getId, Employee::getName));
+
+System.out.println(result);
+
+
+==========================================================================================
+On List<Employee>
+=================
+1.Sort by salary / name / age
+2.Find highest salary / second highest salary
+3.Group by department
+4.Count employees in each department
+5.Get employees whose salary > X
+6.Convert list to map
+7.Find duplicate employee names
+8.Partition employees by salary range
+9.Get average salary by department
+10.Find youngest / oldest employee

@@ -1,0 +1,38 @@
+Find all employees whose salary is greater than 50,000.
+Find employees belonging to "IT" department.
+Find employees older than 30.
+Find the employee with the highest salary.
+Find the employee with the lowest salary.
+Find the second-highest salary.
+Find the second-lowest salary.
+Find the third-highest salary.
+Find the highest-paid employee in each department.
+Find the lowest-paid employee in each department.
+Find the average salary of employees.
+Find the average salary of each department.
+Find the total salary paid by each department.
+Find the employee count in each department.
+Find the employee count by gender.
+Find the average salary by gender.
+Find the highest salary by gender.
+Find the youngest employee.
+Find the oldest employee.
+Find the youngest employee from each department.
+Find the oldest employee from each department.
+Find employees whose salary is greater than the average salary.
+Find employees whose salary is greater than their department's average salary.
+Find the department having the highest average salary.
+Find the department having the lowest average salary.
+Find the department having the highest number of employees.
+Find the department having the lowest number of employees.
+Sort employees by salary.
+Sort employees by salary descending.
+Sort employees by department and then salary.
+Sort employees by salary and then name.
+Find the top 3 highest-paid employees.
+Find the top 3 highest-paid employees from each department.
+Find duplicate employee names.
+Find employees having the same salary.
+Find employees whose names start with "A".
+Find the average salary of employees whose age is greater than 30.
+Find the sum of salaries of employees from the IT department.

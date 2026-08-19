@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: 04-welcome-service
+  boot:
+     admin:
+        client:
+           url: http://localhost:1111/
+server:
+  port:3030
+  

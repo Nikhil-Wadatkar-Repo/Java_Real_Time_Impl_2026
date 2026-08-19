@@ -1,5 +1,7 @@
 package com.mco;
 
+import com.Employee;
+
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -53,7 +55,7 @@ public class Stream_API_Demo {
         // Who has the most working experience in the organization
         Employee experiencedEmployee = employees.stream().sorted(Comparator.comparing(Employee::getYearOfJoining))
                 .findFirst().orElse(null);
-        System.out.println(experiencedEmployee.name + " " + experiencedEmployee.getYearOfJoining());
+        System.out.println(experiencedEmployee.getName() + " " + experiencedEmployee.getYearOfJoining());
 
         // How many male and female employees are there in the sales and marketing team?
         Map<String, Long> sam = employees.stream()

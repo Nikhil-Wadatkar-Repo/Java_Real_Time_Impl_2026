@@ -1,0 +1,489 @@
+===========================================================================================
+1. Count Strings with Specific Prefix
+Question: Count strings starting with a specific prefix, e.g., “A”.
+
+List<String> names = Arrays.asList("Alice", "Bob", "Annie", "Alex", "Charlie");
+long count = names.stream()
+    .filter(name -> name.startsWith("A"))
+    .count();
+System.out.println(count); // Output: 3
+
+===========================================================================================
+2. Find First Non-Repeated Character in a String
+Question: Find the first non-repeated character in a string.
+
+String input = "swiss";
+Optional<Character> firstNonRepeated = input.chars()
+    .mapToObj(c -> (char) c)
+    .filter(c -> input.indexOf(c) == input.lastIndexOf(c))
+    .findFirst();
+System.out.println(firstNonRepeated.orElse(null)); // Output: w
+
+===========================================================================================
+3. Convert List of Strings to Uppercase
+Question: Convert all strings in a list to uppercase.
+
+List<String> names = Arrays.asList("java", "stream", "api");
+List<String> uppercaseNames = names.stream()
+    .map(String::toUpperCase)
+    .collect(Collectors.toList());
+System.out.println(uppercaseNames); // Output: [JAVA, STREAM, API]
+===========================================================================================
+4. Check if Any String Matches a Condition
+Question: Check if any string in a list contains “API”.
+
+List<String> strings = Arrays.asList("Java", "Stream API", "Lambda");
+boolean containsAPI = strings.stream()
+    .anyMatch(s -> s.contains("API"));
+System.out.println(containsAPI); // Output: true
+
+===========================================================================================
+5. Group Strings by Length
+Question: Group a list of strings based on their length.
+
+List<String> words = Arrays.asList("Java", "Stream", "API", "Code", "Fun");
+Map<Integer, List<String>> groupedByLength = words.stream()
+    .collect(Collectors.groupingBy(String::length));
+System.out.println(groupedByLength);
+// Output: {3=[API], 4=[Java, Code, Fun], 6=[Stream]}
+
+===========================================================================================
+6. Concatenate Strings
+Question: Concatenate all strings in a list into a single string.
+
+List<String> words = Arrays.asList("Stream", "API", "is", "powerful");
+String concatenated = words.stream()
+    .reduce("", (s1, s2) -> s1 + " " + s2).trim();
+System.out.println(concatenated); // Output: Stream API is powerful
+
+===========================================================================================
+7. Find the Longest String
+Question: Find the longest string in a list.
+
+List<String> words = Arrays.asList("Java", "Stream", "API", "Development");
+String longest = words.stream()
+    .reduce((word1, word2) -> word1.length() > word2.length() ? word1 : word2)
+    .orElse(null);
+System.out.println(longest); // Output: Development
+
+===========================================================================================
+8. Count Frequency of Characters in a String
+Question: Count the frequency of each character in a string.
+
+String input = "success";
+Map<Character, Long> frequency = input.chars()
+    .mapToObj(c -> (char) c)
+    .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+System.out.println(frequency); // Output: {s=3, u=1, c=2, e=1}
+
+===========================================================================================
+9. Find All Palindromic Strings
+Question: Find all strings that are palindromes in a list.
+
+List<String> words = Arrays.asList("radar", "level", "world", "java");
+List<String> palindromes = words.stream()
+    .filter(word -> word.equals(new StringBuilder(word).reverse().toString()))
+    .collect(Collectors.toList());
+System.out.println(palindromes); // Output: [radar, level]
+
+==========================================================================================
+10. Reverse Each String in a List
+Question: Reverse each string in a list.
+
+List<String> words = Arrays.asList("Java", "Stream", "API");
+List<String> reversedWords = words.stream()
+    .map(word -> new StringBuilder(word).reverse().toString())
+    .collect(Collectors.toList());
+System.out.println(reversedWords); // Output: [avaJ, maertS, IPA]
+
+==========================================================================================
+11. Find the Most Frequent Character in a String
+Question: Find the most frequent character in a string.
+
+String input = "success";
+char mostFrequent = input.chars()
+    .mapToObj(c -> (char) c)
+    .collect(Collectors.groupingBy(c -> c, Collectors.counting()))
+    .entrySet().stream()
+    .max(Map.Entry.comparingByValue())
+    .map(Map.Entry::getKey)
+    .orElseThrow();
+System.out.println(mostFrequent); // Output: s
+
+==========================================================================================
+12. Partition Strings by Palindrome
+Question: Partition strings into palindromes and non-palindromes.
+
+List<String> words = Arrays.asList("radar", "level", "java", "stream");
+Map<Boolean, List<String>> partitioned = words.stream()
+    .collect(Collectors.partitioningBy(word -> word.equals(new StringBuilder(word).reverse().toString())));
+System.out.println(partitioned);
+// Output: {false=[java, stream], true=[radar, level]}
+
+
+==========================================================================================
+13. Find the Longest Word from a Sentence
+Question: Find the longest word in a sentence using Streams.
+
+String sentence = "Java Stream API is very powerful";
+String longestWord = Arrays.stream(sentence.split(" "))
+    .max(Comparator.comparingInt(String::length))
+    .orElse(null);
+System.out.println(longestWord); // Output: powerful
+
+==========================================================================================
+14. Group by First Character
+Question: Group a list of strings by their first character.
+
+List<String> words = Arrays.asList("apple", "banana", "avocado", "blueberry", "cherry");
+Map<Character, List<String>> groupedByFirstChar = words.stream()
+    .collect(Collectors.groupingBy(word -> word.charAt(0)));
+System.out.println(groupedByFirstChar);
+// Output: {a=[apple, avocado], b=[banana, blueberry], c=[cherry]}
+
+
+==========================================================================================
+15. Custom Reduce to Concatenate Strings
+Question: Concatenate strings in reverse order using reduce.
+
+List<String> words = Arrays.asList("Stream", "API", "is", "awesome");
+String reversedConcatenation = words.stream()
+    .reduce((w1, w2) -> w2 + " " + w1)
+    .orElse("");
+System.out.println(reversedConcatenation); // Output: awesome is API Stream
+
+
+==========================================================================================
+16. Find the Word with Maximum Vowels
+Question: Find the word with the most vowels in a list.
+
+List<String> words = Arrays.asList("stream", "java", "programming", "awesome");
+String wordWithMostVowels = words.stream()
+    .max(Comparator.comparingInt(word -> (int) word.chars().filter(c -> "aeiou".indexOf(c) != -1).count()))
+    .orElse(null);
+System.out.println(wordWithMostVowels); // Output: programming
+
+==========================================================================================
+17. Count Frequency of Characters in a String
+Question: Count the frequency of each character in a string.
+
+String input = "success";
+Map<Character, Long> charFrequency = input.chars()
+    .mapToObj(c -> (char) c)
+    .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+System.out.println(charFrequency); // Output: {s=3, u=1, c=2, e=1}
+
+
+==========================================================================================
+18. How to use map to convert object into Uppercase in Java 8?
+
+public class Java8 {
+ 
+    public static void main(String[] args) {
+        List<String> nameLst = names.stream()
+                                    .map(String::toUpperCase)
+                                    .collect(Collectors.toList());
+        System.out.println(nameLst);
+    }
+}//output:AA, BB, CC, DD
+
+
+==========================================================================================
+19. Java 8 program to check if two strings are anagrams or not?
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        String s1 = "RaceCar";
+        String s2 = "CarRace";
+         
+        s1 = Stream.of(s1.split("")).map(String::toUpperCase).sorted().collect(Collectors.joining());
+         
+        s2 = Stream.of(s2.split("")).map(String::toUpperCase).sorted().collect(Collectors.joining());
+         
+        if (s1.equals(s2)) 
+        {
+            System.out.println("Two strings are anagrams");
+        }
+        else
+        {
+            System.out.println("Two strings are not anagrams");
+        }
+    }
+}
+//Output :Two strings are anagrams
+
+
+==========================================================================================
+20. Given a list of strings, sort them according to increasing order of their length?
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+ 
+public class Java8Code 
+{
+    public static void main(String[] args) 
+    {
+        List<String> listOfStrings = Arrays.asList("Java", "Python", "C#", "HTML", "Kotlin", "C++", "COBOL", "C");
+         
+        listOfStrings.stream().sorted(Comparator.comparing(String::length)).forEach(System.out::println);
+    }
+}
+Output :
+
+C
+C#
+C++
+Java
+HTML
+COBOL
+Python
+Kotlin
+============================================================================================================================
+21.Count strings with length greater than 3
+
+Question:
+Count how many strings in the list have length > 3.
+
+List<String> names = Arrays.asList("Ram", "Shyam", "Java", "Go");
+
+long count = names.stream()
+                  .filter(name -> name.length() > 3)
+                  .count();
+
+System.out.println(count);
+
+
+============================================================================================================================
+22.Count frequency of each element in a list
+
+Question:
+Given a list of strings, count frequency of each element.
+
+List<String> names = Arrays.asList("Java", "Spring", "Java", "API", "Spring");
+
+Map<String, Long> freqMap = names.stream()
+        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+System.out.println(freqMap);
+
+
+============================================================================================================================
+23.  Join list of strings with comma
+
+Question:
+Convert list of strings into a single comma-separated string.
+
+List<String> names = Arrays.asList("Java", "Spring", "Kafka");
+
+String result = names.stream()
+                     .collect(Collectors.joining(", "));
+
+System.out.println(result);
+
+
+============================================================================================================================
+24. Flatten a list of lists
+
+Question:
+Convert List<List<String>> into a single List<String>.
+
+List<List<String>> list = Arrays.asList(
+        Arrays.asList("Java", "Spring"),
+        Arrays.asList("Kafka", "Docker")
+);
+
+List<String> flatList = list.stream()
+                            .flatMap(Collection::stream)
+                            .toList();
+
+System.out.println(flatList);
+
+
+============================================================================================================================
+25. Get unique characters from list of strings
+
+Question:
+From a list of words, print unique characters.
+
+List<String> words = Arrays.asList("java", "api");
+
+List<String> chars = words.stream()
+        .flatMap(word -> Arrays.stream(word.split("")))
+        .distinct()
+        .toList();
+
+System.out.println(chars);
+
+
+============================================================================================================================
+26. Find the longest string in a list
+
+Question:
+Find the longest string from a list.
+
+List<String> names = Arrays.asList("Java", "SpringBoot", "API");
+
+String longest = names.stream()
+                      .max(Comparator.comparingInt(String::length))
+                      .orElse(null);
+
+System.out.println(longest);
+
+============================================================================================================================
+27. Find strings with duplicate characters
+
+Question:
+Find all strings in the list that contain duplicate characters.
+
+List<String> words = Arrays.asList("java", "spring", "api", "hello");
+
+List<String> result = words.stream()
+        .filter(word -> word.chars().distinct().count() != word.length())
+        .toList();
+
+System.out.println(result);
+
+============================================================================================================================
+28. Sort strings by length
+
+Question:
+Sort list of strings based on length.
+
+List<String> names = Arrays.asList("Java", "SpringBoot", "API", "Microservice");
+
+List<String> sorted = names.stream()
+                           .sorted(Comparator.comparingInt(String::length))
+                           .toList();
+
+System.out.println(sorted);
+
+============================================================================================================================
+29. Remove null and empty strings from list
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class RemoveNullEmpty {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("Java", "", null, "Spring", " ", "Boot");
+
+        List<String> result = list.stream()
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toList());
+
+        System.out.println(result); // [Java, Spring, Boot]
+    }
+}
+
+============================================================================================================================
+30. Reverse each word in a sentence using streams
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class ReverseWords {
+    public static void main(String[] args) {
+        String input = "java stream api";
+
+        String result = Arrays.stream(input.split(" "))
+                .map(word -> new StringBuilder(word).reverse().toString())
+                .collect(Collectors.joining(" "));
+
+        System.out.println(result); // avaj maerts ipa
+    }
+}
+
+============================================================================================================================
+31. Check if no string is empty
+List<String> names = Arrays.asList("Java", "Spring", "Boot");
+
+boolean result = names.stream()
+        .noneMatch(String::isEmpty);
+
+System.out.println(result);
+
+============================================================================================================================
+32. Join list of strings with comma
+List<String> names = Arrays.asList("Java", "Spring", "Kafka");
+
+String result = names.stream()
+        .collect(Collectors.joining(", "));
+
+System.out.println(result);
+
+============================================================================================================================
+33. Find the longest string in a list
+List<String> names = Arrays.asList("Java", "SpringBoot", "API");
+
+String longest = names.stream()
+        .max(Comparator.comparingInt(String::length))
+        .orElse(null);
+
+System.out.println(longest);
+
+============================================================================================================================
+34. Get unique characters from list of strings
+List<String> words = Arrays.asList("java", "api");
+
+List<String> chars = words.stream()
+        .flatMap(word -> Arrays.stream(word.split("")))
+        .distinct()
+        .toList();
+
+System.out.println(chars);
+============================================================================================================================
+35. Count vowels in each string
+List<String> words = Arrays.asList("java", "spring", "boot");
+
+Map<String, Long> result = words.stream()
+        .collect(Collectors.toMap(
+                Function.identity(),
+                word -> word.toLowerCase().chars()
+                        .filter(ch -> "aeiou".indexOf(ch) != -1)
+                        .count()
+        ));
+
+System.out.println(result);
+
+============================================================================================================================
+36. Find strings containing duplicate characters
+List<String> words = Arrays.asList("java", "api", "hello", "spring");
+
+List<String> result = words.stream()
+        .filter(word -> word.chars().distinct().count() != word.length())
+        .toList();
+
+System.out.println(result);
+
+============================================================================================================================
+37. Sort strings alphabetically and remove duplicates
+List<String> names = Arrays.asList("Java", "Spring", "API", "Java", "Boot");
+
+List<String> result = names.stream()
+        .distinct()
+        .sorted()
+        .toList();
+
+System.out.println(result);
+
+============================================================================================================================
+
+============================================================================================================================
+On List<String>
+===============
+1.Find duplicate words
+2.Sort by length / alphabetical
+3.Group by length
+4.Find longest string
+5.Convert to uppercase / lowercase
+6.Join all strings with delimiter
+7.Find strings starting with a specific character
+8.Count vowels in each string
+9.Find palindromes in list
+10.Flatten list of words into characters
