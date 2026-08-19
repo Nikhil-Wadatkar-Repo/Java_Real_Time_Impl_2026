@@ -1,7 +1,0 @@
-com\embarkx\cachingdemo\product\Product.class
-com\embarkx\cachingdemo\product\ProductController.class
-com\embarkx\cachingdemo\product\ProductRepository.class
-com\embarkx\cachingdemo\product\ProductService.class
-com\embarkx\cachingdemo\config\RedisCacheConfig.class
-com\embarkx\cachingdemo\CachingDemoApplication.class
-com\embarkx\cachingdemo\config\ProductCacheProperties.class
