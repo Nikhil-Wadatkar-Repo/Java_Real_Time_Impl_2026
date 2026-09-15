@@ -56,3 +56,11 @@ S3
 
 But if we use IAM role, AWS automatically provides temporary credentials to the EC2 instance.
 Spring Boot ->  EC2 ->  IAM Role -> S3
+
+
+Explain Circuit breaker with below points. Consider order service and inventory service as an exampple. Be psecific. dont be too long.
+The problem
+What is circuit breaker
+Why do we need circuit breaker
+Circuit breaker states
+Implementation and configuration
