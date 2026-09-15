@@ -3,6 +3,3 @@ spring:
     name: 01-spring-boot-open-ai
 
 
-  ai:
-    openai:
-      api-key: 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
