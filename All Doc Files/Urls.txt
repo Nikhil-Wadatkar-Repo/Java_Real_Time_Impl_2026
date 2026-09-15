@@ -1,0 +1,218 @@
+Claude code play list:
+https://www.youtube.com/watch?v=aZCU_wTXwfo&list=PLKnIA16_RmvaYH3poI0oJvbDF4zEvpq8W&index=13
+
+Spring Security playlist:
+https://www.youtube.com/watch?v=29vmP4YLwyo&list=PLxhSr_SLdXGOpdX60nHze41CvExvBOn09
+
+Scenario base microservice interview questions
+https://www.youtube.com/watch?v=c2nGGHkTjqE&list=PLW44Ou4bcDZEyac8Vw7ihSPf_bBitCKYB
+
+Java Microservices Complete Videos by Ashok Sir
+https://www.youtube.com/watch?v=bNsj0GguMGw
+
+Spring AI 
+https://www.youtube.com/watch?v=W_mrJY6zaBw&list=PL0zysOflRCen1TeDUm-ebl9T-WbJygCGE&index=1
+
+AWS with Java
+ https://www.youtube.com/watch?v=B-MwKnNBh5s&list=PL-bgVzzRdaPhE4h7u9OWe0cf7P6H-MpeM&index=3
+
+AWS credentials:
+Ruchitha
+postbox2001
+India@123
+
+My AWS credentials
+username:Nikhil_AWS
+password:Ankur_4693
+account id: 755876200638
+
+
+PostGreSQL application properties
+  <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+		
+spring.datasource.url=jdbc:postgresql://localhost:5432/nikhil_db
+spring.datasource.username=postgres
+spring.datasource.password=manager
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.jdbc.batch_size=50
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.properties.hibernate.jdbc.batch_versioned_data=true
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.orm.jdbc.bind=TRACE
+logging.level.com.mco.service.EmployeeService=DEBUG
+spring.data.web.pageable.page-serialization-mode=via_dto
+
+Spring AI Cheat sheet
+	ChatClient
+	Prompt
+		PromptTemplate
+		Pompt Stuffing
+	Advisor
+	Chat Memory
+	Tool Calling
+	MCP
+	RAG
+	Embedding
+	Vector Store
+
+Please explain following points about Advisors in spring AI
+
+What is it?
+Why it is needed?
+How does it work?
+Architecture
+Important classes/interface
+Example code
+
+
+
+
+React Js Performance Optimization techniques
+=============================================
+Code splitting: breaking large javascript bundle into multiple small bundles.
+Lazy loading : load the component or budle only when it is needed.
+
+
+Lazy loading implementation
+
+
+create 2 different components
+
+
+
+Spring AI Syllabus
+===================
+Spring Boot integration with OpenAI
+Spring Boot integration with Ollama
+Multiple ChatModel
+
+Section 2:
+Message Roles
+Defaults
+
+Message Roles 
+Defaults
+Prompt Template
+Prompt Stuffing
+Advisors -> Built in advisor, Custom Advisor
+ChatOption
+ChatClient
+
+
+
+	
+	
+Advisors
+Users
+AI Chat Client-response type explained
+Text to types
+Connecting to LLM
+Chat Memory
+RAG
+Vector Database
+MCP server
+
+
+
+
+Set up Spring Data JPA in this Spring Boot project:
+- Entity: Post (id, title, content, createdAt)
+- Repository with findByTitle
+- Use PostgreSQL
+- Add a service layer also which calls repository layer methods
+- Make changes in controller accordingly
+
+June 26 -> 758
+since June -> 770
+
+
+
+
+  CONCEPT
+                       ↓
+              Sub-concepts
+                       ↓
+              Internal working
+                       ↓
+             Important rules
+                       ↓
+              Comparisons
+                       ↓
+             Common mistakes
+                       ↓
+          Real-world scenarios
+                       ↓
+            Interview questions
+			
+
+
+
+# CONCEPT
+
+## 1. What is it?
+
+Simple definition.
+
+## 2. Why do we need it?
+
+Real-world reason.
+
+## 3. How does it work?
+
+Internal working.
+
+## 4. Important components
+
+Classes / interfaces / methods.
+
+## 5. Important rules
+
+Things to remember.
+
+## 6. Internal implementation
+
+Only what a 6-year developer needs.
+
+## 7. Performance
+
+Time complexity + memory considerations.
+
+## 8. Comparison
+
+A vs B vs C.
+
+## 9. Common mistakes
+
+Things candidates commonly get wrong.
+
+## 10. Real-world scenarios
+
+Production-style situations.
+
+## 11. Coding examples
+
+Small examples.
+
+## 12. Interview questions covered
+
+Questions that this concept can answer.
+
+## 13. Senior-level questions
+
+Tricky questions.
+
+## 14. 30-second interview answer
+
+A ready-to-speak answer.
+
+## 15. Quick revision
+
+5–10 bullet points.

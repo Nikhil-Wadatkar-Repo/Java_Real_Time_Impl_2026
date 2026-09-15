@@ -15,6 +15,7 @@ public class HibernateUtil {
             return new Configuration()
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(GeekUserDetails.class)
+                    .addAnnotatedClass(Employee.class)
                     .buildSessionFactory();
         }
         catch (Throwable ex) {

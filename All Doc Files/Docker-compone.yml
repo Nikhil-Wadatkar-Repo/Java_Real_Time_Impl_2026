@@ -1,0 +1,29 @@
+---
+version: '3.8'
+services:
+  web-app:
+    image: node:20-alpine
+    container-name: web-app
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=database-service
+    depends_on:
+      - database-service
+  database-service:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: secretpassword
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+volumes:
+  db_data: null
+networks:
+  backend-network: null
+
+docker-compose config
+
+
+docker run -d -p 6666:3306 --name=docker-mysql -- env="MYSQL_ROOT_PASSWORD=test1234" --env="MYSQL_DATABASE=mydb" mysql

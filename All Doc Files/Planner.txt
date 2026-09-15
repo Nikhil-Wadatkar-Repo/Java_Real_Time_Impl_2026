@@ -1,0 +1,58 @@
+AWS with spring boot videos
+	IAM
+	S3 bucket
+	EC2
+	
+Spring AI 
+	advisors 
+	template prompt
+	
+React JS
+	useEffect rules
+	custom hooks
+
+Redux Architecture
+
+
+
+AWS IAM
+===========
+
+User
+	
+	creating user
+
+	Ankur	Sunrise@123	https://755876200638.signin.aws.amazon.com/console
+	Dhanu	Ankur@4693	https://755876200638.signin.aws.amazon.com/console
+	Hunny	Ankur@4693	https://755876200638.signin.aws.amazon.com/console
+
+
+Note; When we create user, it is not having any permissions or access to any AWS services. Go to EC2, S3 services, it will appear as red. SO we need to add permissions to those specific users. 
+giving him the policies access.
+
+To give permission to specific user or users, we should 
+
+
+GROUP:
+ Group is the set of users . If we need to give some permissions to all user. SO instead of giving each permission to each user, we will create a group and add all users in it. I will add permission to the group instead of giving it to each user one by one.
+
+ We can create a group and add existed users to it and give the permission also.
+
+ IAM Role
+
+ AN IAM Role is set of permissions that anyone (or anything) can assume temporarily to do a specific task.
+ OR
+ temporary identity with permissions that an AWS service, application, or user can assume to access other AWS resources.
+
+
+ Without IAM Role, if spring boot app wants to integrate with S3 bucket or any other services, it required AWS Access key , AWS secret key. But its not recommendded as credentials can exposed accidently.
+
+ Spring Boot application
+       ↓
+AWS Access Key
+AWS Secret Key
+       ↓
+S3
+
+But if we use IAM role, AWS automatically provides temporary credentials to the EC2 instance.
+Spring Boot ->  EC2 ->  IAM Role -> S3
